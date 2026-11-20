@@ -8,8 +8,6 @@ import { calculateCareerMatch } from "@/logic/careerMatching";
 import { calculateLearningEffort } from "@/logic/learningEffort";
 import { generateStarterRoadmap } from "@/logic/roadmap";
 
-// Hardcoded Google Gemini configuration as established in AIBC - DIU
-const HARDCODED_GEMINI_KEY = "AQ.Ab8RN6KnUClPhKk7mr1sZuo2D_iGyGzE32GeeiNJ3TAaEpSeUw";
 const MODEL_NAME = "gemini-3.5-flash-lite";
 
 export async function POST(req: NextRequest) {
@@ -26,9 +24,20 @@ export async function POST(req: NextRequest) {
     const user = await getSessionUser();
     const career = CAREER_CATALOG.find((c) => c.career_id === careerId) || CAREER_CATALOG[0];
 
-    // Priority for API key: Hardcoded Key
-    const apiKey = HARDCODED_GEMINI_KEY;
+    // Priority for API key: Environment Variable > User Profile
+    let apiKey = (process.env.GEMINI_API_KEY || "").trim();
+    if (!apiKey && user?.id) {
+      const profile = await prisma.studentProfile.findUnique({
+        where: { userId: user.id },
+        select: { geminiApiKey: true },
+      });
+      if (profile?.geminiApiKey) {
+        apiKey = profile.geminiApiKey.trim();
+      }
+    }
+
     const activeModel = model || MODEL_NAME;
+    const isValidKey = Boolean(apiKey && apiKey.startsWith("AIzaSy") && apiKey.length >= 35);
 
     // 1. Compute Canonical Deterministic Mathematical Metrics (Immutable Ground Truth)
     const canonicalMatch = calculateCareerMatch(career, skills);
@@ -137,9 +146,22 @@ export async function POST(req: NextRequest) {
 
     let resultGuidance: any = null;
 
-    try {
-      const isBangla = lang === "bn";
-      const prompt = `You are the AI Career Guidance Assistant for SkillRoute AI, a university career navigation platform for undergraduate students in Bangladesh.
+    if (!isValidKey) {
+      const fallback = generateFallbackGuidance();
+      resultGuidance = {
+        ...fallback,
+        apiNotice: apiKey
+          ? (lang === "bn"
+              ? "প্রদত্ত জেমিনাই কী-টি সঠিক নয় (গুগল এআই কী 'AIzaSy' দিয়ে শুরু হয়)। ভেরিফাইড গাণিতিক রোডম্যাপ পরিবেশন করা হচ্ছে।"
+              : "Notice: The provided GEMINI_API_KEY is not a valid Google AI Studio key (keys start with 'AIzaSy'). Serving verified deterministic roadmap.")
+          : (lang === "bn"
+              ? "ভেরিফাইড গাণিতিক রোডম্যাপ সক্রিয়। (লাইভ গুগল জেমিনাই সংযুক্ত করতে AI Settings-এ AI Studio কী যোগ করুন)।"
+              : "Operating in verified deterministic guidance mode. (To enable live Google Gemini 3.5, configure an API key starting with 'AIzaSy' in Settings)."),
+      };
+    } else {
+      try {
+        const isBangla = lang === "bn";
+        const prompt = `You are the AI Career Guidance Assistant for SkillRoute AI, a university career navigation platform for undergraduate students in Bangladesh.
 Generate personalized, encouraging, and actionable learning advice anchored strictly to our deterministic assessment and gap-analysis calculations.
 
 STUDENT PROFILE CONTEXT:
@@ -313,13 +335,29 @@ REQUIRED JSON FORMAT (MUST USE EXACT KEYS):
         generatedAt: new Date().toISOString(),
         isStale: false,
       };
-    } catch (apiErr: any) {
-      console.warn("Gemini API call failed, falling back to deterministic engine:", apiErr.message);
-      const fallback = generateFallbackGuidance();
-      resultGuidance = {
-        ...fallback,
-        apiNotice: `Gemini AI (${activeModel}): ${apiErr.message}. Serving deterministic verified roadmap.`,
-      };
+      } catch (apiErr: any) {
+        console.warn("Gemini API call failed, falling back to deterministic engine:", apiErr.message);
+        let cleanMsg = "Authentication or network error";
+        try {
+          if (typeof apiErr.message === "string") {
+            const jsonMatch = apiErr.message.match(/\{[\s\S]*\}/);
+            if (jsonMatch) {
+              const parsed = JSON.parse(jsonMatch[0]);
+              cleanMsg = parsed?.error?.message || cleanMsg;
+            } else {
+              cleanMsg = apiErr.message;
+            }
+          }
+        } catch {
+          cleanMsg = apiErr.message || cleanMsg;
+        }
+
+        const fallback = generateFallbackGuidance();
+        resultGuidance = {
+          ...fallback,
+          apiNotice: `Gemini AI (${activeModel}): ${cleanMsg}. Serving deterministic verified roadmap.`,
+        };
+      }
     }
 
     // Persist guidance to StudentProfile in database

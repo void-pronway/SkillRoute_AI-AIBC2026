@@ -3,31 +3,35 @@ import { GoogleGenAI } from "@google/genai";
 import { getSessionUser } from "@/lib/auth";
 import { prisma } from "@/lib/prisma";
 
-const HARDCODED_GEMINI_KEY = "AQ.Ab8RN6KnUClPhKk7mr1sZuo2D_iGyGzE32GeeiNJ3TAaEpSeUw";
-const HARDCODED_GEMINI_MODEL = "gemini-3.5-flash-lite";
+const DEFAULT_MODEL = "gemini-3.5-flash-lite";
 
 export async function GET(req: NextRequest) {
   try {
     const user = await getSessionUser();
     let userModel: string | null = null;
+    let userKey: string | null = null;
 
     if (user?.id) {
       const profile = await prisma.studentProfile.findUnique({
         where: { userId: user.id },
-        select: { geminiModel: true },
+        select: { geminiApiKey: true, geminiModel: true },
       });
       userModel = profile?.geminiModel || null;
+      userKey = profile?.geminiApiKey || null;
     }
 
-    const effectiveKey = HARDCODED_GEMINI_KEY;
-    const effectiveModel = userModel || process.env.GEMINI_MODEL || HARDCODED_GEMINI_MODEL;
+    const effectiveKey = (userKey || process.env.GEMINI_API_KEY || "").trim();
+    const effectiveModel = userModel || process.env.GEMINI_MODEL || DEFAULT_MODEL;
 
-    const maskedKey = `${effectiveKey.slice(0, 6)}...${effectiveKey.slice(-4)}`;
+    const isValid = Boolean(effectiveKey && effectiveKey.startsWith("AIzaSy") && effectiveKey.length >= 35);
+    const maskedKey = isValid
+      ? `${effectiveKey.slice(0, 6)}...${effectiveKey.slice(-4)}`
+      : "";
 
     return NextResponse.json({
       success: true,
-      hasKey: true,
-      source: "hardcoded_code",
+      hasKey: isValid,
+      source: userKey ? "user_profile" : process.env.GEMINI_API_KEY ? "env_variable" : "deterministic_mode",
       maskedKey,
       model: effectiveModel,
       availableModels: [
@@ -44,15 +48,35 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   try {
     const user = await getSessionUser();
-    const { model = HARDCODED_GEMINI_MODEL, testConnection = false } = await req.json();
+    const { apiKey, model = DEFAULT_MODEL, testConnection = false } = await req.json();
 
-    const cleanKey = HARDCODED_GEMINI_KEY;
-    const cleanModel = typeof model === "string" ? model.trim() : HARDCODED_GEMINI_MODEL;
+    const cleanModel = typeof model === "string" ? model.trim() : DEFAULT_MODEL;
+    let keyToUse = typeof apiKey === "string" ? apiKey.trim() : "";
 
-    // Verify connection using official GoogleGenAI SDK
-    if (testConnection) {
+    // If apiKey is masked, keep existing configured key
+    if (!keyToUse || keyToUse.includes("...")) {
+      keyToUse = (process.env.GEMINI_API_KEY || "").trim();
+      if (!keyToUse && user?.id) {
+        const p = await prisma.studentProfile.findUnique({
+          where: { userId: user.id },
+          select: { geminiApiKey: true },
+        });
+        keyToUse = (p?.geminiApiKey || "").trim();
+      }
+    }
+
+    // Validate key structure if provided
+    if (keyToUse && !keyToUse.startsWith("AIzaSy")) {
+      return NextResponse.json(
+        { error: "Invalid Google Gemini API key format. Official keys from Google AI Studio (aistudio.google.com) start with 'AIzaSy'." },
+        { status: 400 }
+      );
+    }
+
+    // Verify connection using official GoogleGenAI SDK if key is valid
+    if (testConnection && keyToUse) {
       try {
-        const ai = new GoogleGenAI({ apiKey: cleanKey });
+        const ai = new GoogleGenAI({ apiKey: keyToUse });
         const testRes = await ai.models.generateContent({
           model: cleanModel,
           contents: "Respond with the single word: OK",
@@ -62,37 +86,52 @@ export async function POST(req: NextRequest) {
           throw new Error("Empty response from Google Gemini API");
         }
       } catch (testErr: any) {
+        let msg = "Failed to reach Gemini";
+        try {
+          if (typeof testErr.message === "string" && testErr.message.includes("{")) {
+            const p = JSON.parse(testErr.message.slice(testErr.message.indexOf("{")));
+            msg = p?.error?.message || msg;
+          } else {
+            msg = testErr.message || msg;
+          }
+        } catch {
+          msg = testErr.message || msg;
+        }
         return NextResponse.json(
-          { error: `Gemini API validation failed: ${testErr.message || "Failed to reach Gemini"}` },
+          { error: `Gemini API validation failed: ${msg}` },
           { status: 400 }
         );
       }
     }
 
-    // Save model to user's profile if logged in
+    // Save key & model to user's profile if logged in
     if (user?.id) {
       await prisma.studentProfile.upsert({
         where: { userId: user.id },
         update: {
-          geminiApiKey: cleanKey,
+          geminiApiKey: keyToUse || null,
           geminiModel: cleanModel,
         },
         create: {
           userId: user.id,
-          geminiApiKey: cleanKey,
+          geminiApiKey: keyToUse || null,
           geminiModel: cleanModel,
         },
       });
     }
 
-    process.env.GEMINI_API_KEY = cleanKey;
+    if (keyToUse) {
+      process.env.GEMINI_API_KEY = keyToUse;
+    }
     process.env.GEMINI_MODEL = cleanModel;
 
     return NextResponse.json({
       success: true,
-      message: `Google Gemini (${cleanModel}) verified and connected!`,
+      message: keyToUse
+        ? `Google Gemini (${cleanModel}) verified and connected!`
+        : `Model updated to ${cleanModel} (Deterministic guidance mode).`,
       model: cleanModel,
-      maskedKey: `${cleanKey.slice(0, 6)}...${cleanKey.slice(-4)}`,
+      maskedKey: keyToUse ? `${keyToUse.slice(0, 6)}...${keyToUse.slice(-4)}` : "",
     });
   } catch (err: any) {
     return NextResponse.json({ error: err.message }, { status: 500 });
@@ -101,10 +140,18 @@ export async function POST(req: NextRequest) {
 
 export async function DELETE(req: NextRequest) {
   try {
+    const user = await getSessionUser();
+    if (user?.id) {
+      await prisma.studentProfile.update({
+        where: { userId: user.id },
+        data: { geminiApiKey: null },
+      });
+    }
+    delete process.env.GEMINI_API_KEY;
     return NextResponse.json({
       success: true,
-      message: "Reset to default Gemini 3.5 Flash-Lite engine.",
-      model: HARDCODED_GEMINI_MODEL,
+      message: "Reset to default deterministic guidance mode.",
+      model: DEFAULT_MODEL,
     });
   } catch (err: any) {
     return NextResponse.json({ error: err.message }, { status: 500 });
