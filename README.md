@@ -302,6 +302,42 @@ Open your browser and navigate to: **`http://localhost:3000`**
 
 ---
 
+## 🚀 Free Cloud Deployment on Render
+
+SkillRoute AI is pre-configured with a native Render Blueprint (`render.yaml`) for 100% free cloud deployment:
+
+### Option A: 1-Click Blueprint (Recommended)
+1. Push this repository to your GitHub account.
+2. Log into [Render.com](https://render.com/).
+3. Click **New +** → **Blueprint**.
+4. Select your repository `SkillRoute_AI-AIBC2026`.
+5. Render reads `render.yaml` automatically and configures:
+   - **Environment:** Node.js
+   - **Plan:** Free
+   - **Region:** Singapore (`singapore`)
+   - **Build Command:** `npm install && npx prisma db push && node scripts/seed.js && npm run build`
+   - **Start Command:** `npx prisma db push && node scripts/seed.js && npm start`
+6. Click **Apply**. Within 3–4 minutes, your live URL (`https://skillroute-ai.onrender.com`) will be running with all demo accounts pre-seeded!
+
+### Option B: Manual Web Service Setup
+If creating manually without Blueprint:
+1. On Render Dashboard, click **New +** → **Web Service**.
+2. Connect your GitHub repository.
+3. Configure the settings:
+   - **Name:** `skillroute-ai`
+   - **Runtime:** `Node`
+   - **Build Command:** `npm install && npx prisma db push && node scripts/seed.js && npm run build`
+   - **Start Command:** `npx prisma db push && node scripts/seed.js && npm start`
+   - **Plan:** `Free`
+4. Under **Environment Variables**, add:
+   - `DATABASE_URL`: `file:./dev.db`
+   - `SESSION_SECRET`: `change-to-any-random-32-character-secret`
+   - `NODE_ENV`: `production`
+   - `GEMINI_API_KEY`: *(Optional Google Gemini API key)*
+5. Click **Create Web Service**.
+
+---
+
 ## 📂 Project Directory Structure
 
 ```

@@ -16,7 +16,7 @@ async function main() {
   // 1. Seed Student Persona (Benchmark A Initial Profile)
   const student = await prisma.user.upsert({
     where: { email: "student@skillroute.ai" },
-    update: {},
+    update: { passwordHash: defaultPasswordHash },
     create: {
       email: "student@skillroute.ai",
       passwordHash: defaultPasswordHash,
@@ -93,7 +93,7 @@ async function main() {
   // 2. Seed Employer Organization & Owner
   const employer = await prisma.user.upsert({
     where: { email: "employer@technext.bd" },
-    update: {},
+    update: { passwordHash: defaultPasswordHash },
     create: {
       email: "employer@technext.bd",
       passwordHash: defaultPasswordHash,
@@ -128,7 +128,7 @@ async function main() {
   // 3. Seed Recruiter
   const recruiter = await prisma.user.upsert({
     where: { email: "recruiter@technext.bd" },
-    update: {},
+    update: { passwordHash: defaultPasswordHash },
     create: {
       email: "recruiter@technext.bd",
       passwordHash: defaultPasswordHash,
@@ -149,7 +149,7 @@ async function main() {
   // 4. Seed Reviewer & Admin
   const reviewer = await prisma.user.upsert({
     where: { email: "reviewer@skillroute.ai" },
-    update: {},
+    update: { passwordHash: defaultPasswordHash },
     create: {
       email: "reviewer@skillroute.ai",
       passwordHash: defaultPasswordHash,
@@ -162,7 +162,7 @@ async function main() {
 
   const admin = await prisma.user.upsert({
     where: { email: "admin@skillroute.ai" },
-    update: {},
+    update: { passwordHash: defaultPasswordHash },
     create: {
       email: "admin@skillroute.ai",
       passwordHash: defaultPasswordHash,
