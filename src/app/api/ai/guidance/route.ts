@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
     }
 
     const activeModel = model || MODEL_NAME;
-    const isValidKey = Boolean(apiKey && apiKey.startsWith("AIzaSy") && apiKey.length >= 35);
+    const isValidKey = Boolean(apiKey && (apiKey.startsWith("AIzaSy") || apiKey.startsWith("AQ.")) && apiKey.length >= 35);
 
     // 1. Compute Canonical Deterministic Mathematical Metrics (Immutable Ground Truth)
     const canonicalMatch = calculateCareerMatch(career, skills);
@@ -152,11 +152,11 @@ export async function POST(req: NextRequest) {
         ...fallback,
         apiNotice: apiKey
           ? (lang === "bn"
-              ? "প্রদত্ত জেমিনাই কী-টি সঠিক নয় (গুগল এআই কী 'AIzaSy' দিয়ে শুরু হয়)। ভেরিফাইড গাণিতিক রোডম্যাপ পরিবেশন করা হচ্ছে।"
-              : "Notice: The provided GEMINI_API_KEY is not a valid Google AI Studio key (keys start with 'AIzaSy'). Serving verified deterministic roadmap.")
+              ? "প্রদত্ত জেমিনাই কী-টি যাচাই করা যায়নি। ভেরিফাইড গাণিতিক রোডম্যাপ পরিবেশন করা হচ্ছে।"
+              : "Notice: Provided Gemini API key is unverified or restricted. Serving deterministic verified roadmap.")
           : (lang === "bn"
               ? "ভেরিফাইড গাণিতিক রোডম্যাপ সক্রিয়। (লাইভ গুগল জেমিনাই সংযুক্ত করতে AI Settings-এ AI Studio কী যোগ করুন)।"
-              : "Operating in verified deterministic guidance mode. (To enable live Google Gemini 3.5, configure an API key starting with 'AIzaSy' in Settings)."),
+              : "Operating in verified deterministic guidance mode. (To enable live Google Gemini 3.5, configure an API key from Google AI Studio in Settings)."),
       };
     } else {
       try {
@@ -340,12 +340,16 @@ REQUIRED JSON FORMAT (MUST USE EXACT KEYS):
         let cleanMsg = "Authentication or network error";
         try {
           if (typeof apiErr.message === "string") {
-            const jsonMatch = apiErr.message.match(/\{[\s\S]*\}/);
-            if (jsonMatch) {
-              const parsed = JSON.parse(jsonMatch[0]);
-              cleanMsg = parsed?.error?.message || cleanMsg;
+            if (apiErr.message.includes("ACCESS_TOKEN_TYPE_UNSUPPORTED") || apiErr.message.includes("UNAUTHENTICATED")) {
+              cleanMsg = "API key unauthenticated or project API restricted (ensure 'Generative Language API' is enabled in Google Cloud Console)";
             } else {
-              cleanMsg = apiErr.message;
+              const jsonMatch = apiErr.message.match(/\{[\s\S]*\}/);
+              if (jsonMatch) {
+                const parsed = JSON.parse(jsonMatch[0]);
+                cleanMsg = parsed?.error?.message || cleanMsg;
+              } else {
+                cleanMsg = apiErr.message;
+              }
             }
           }
         } catch {

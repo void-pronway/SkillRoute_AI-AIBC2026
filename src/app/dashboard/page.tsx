@@ -2241,13 +2241,13 @@ export default function StudentDashboardPage() {
                   type="text"
                   value={inputApiKey}
                   onChange={(e) => setInputApiKey(e.target.value)}
-                  placeholder={geminiConfig.maskedKey ? `Active: ${geminiConfig.maskedKey}` : "AIzaSy..."}
+                  placeholder={geminiConfig.maskedKey ? `Active: ${geminiConfig.maskedKey}` : "AIzaSy... or AQ..."}
                   className="w-full p-2.5 rounded-xl bg-brand-cream/40 dark:bg-brand-onyx/40 border border-brand-sage dark:border-brand-onyx text-xs font-mono text-brand-black dark:text-brand-cream focus:outline-hidden focus:ring-2 focus:ring-amber-500/50"
                 />
                 <span className="text-[10px] text-brand-onyx/70 dark:text-brand-sage/70 block mt-1">
                   {lang === "bn"
-                    ? "গুগল এআই স্টুডিও (aistudio.google.com) থেকে ফ্রি জেমিনাই কী ব্যবহার করুন (কী শুরু হয় 'AIzaSy' দিয়ে)। কী না থাকলেও ডিটারমিনিস্টিক রোডম্যাপ স্বয়ংক্রিয়ভাবে কাজ করবে।"
-                    : "Use a free Gemini API key from Google AI Studio (aistudio.google.com). Keys start with 'AIzaSy'. Without a key, the verified deterministic roadmap serves automatically."}
+                    ? "গুগল এআই স্টুডিও (aistudio.google.com) থেকে ফ্রি জেমিনাই কী ব্যবহার করুন (কী শুরু হয় 'AIzaSy' বা 'AQ.' দিয়ে)। কী না থাকলেও ডিটারমিনিস্টিক রোডম্যাপ স্বয়ংক্রিয়ভাবে কাজ করবে।"
+                    : "Use a free Gemini API key from Google AI Studio (aistudio.google.com). Keys start with 'AIzaSy' or 'AQ.'. Without a key, the verified deterministic roadmap serves automatically."}
                 </span>
               </div>
 

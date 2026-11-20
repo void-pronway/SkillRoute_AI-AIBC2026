@@ -23,7 +23,7 @@ export async function GET(req: NextRequest) {
     const effectiveKey = (userKey || process.env.GEMINI_API_KEY || "").trim();
     const effectiveModel = userModel || process.env.GEMINI_MODEL || DEFAULT_MODEL;
 
-    const isValid = Boolean(effectiveKey && effectiveKey.startsWith("AIzaSy") && effectiveKey.length >= 35);
+    const isValid = Boolean(effectiveKey && (effectiveKey.startsWith("AIzaSy") || effectiveKey.startsWith("AQ.")) && effectiveKey.length >= 35);
     const maskedKey = isValid
       ? `${effectiveKey.slice(0, 6)}...${effectiveKey.slice(-4)}`
       : "";
@@ -66,9 +66,9 @@ export async function POST(req: NextRequest) {
     }
 
     // Validate key structure if provided
-    if (keyToUse && !keyToUse.startsWith("AIzaSy")) {
+    if (keyToUse && !keyToUse.startsWith("AIzaSy") && !keyToUse.startsWith("AQ.")) {
       return NextResponse.json(
-        { error: "Invalid Google Gemini API key format. Official keys from Google AI Studio (aistudio.google.com) start with 'AIzaSy'." },
+        { error: "Invalid Google Gemini API key format. Official keys from Google AI Studio (aistudio.google.com) start with 'AIzaSy' or 'AQ.'." },
         { status: 400 }
       );
     }
