@@ -1,0 +1,351 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// ----------------------------------------------------
+// Authentication & User Accounts
+// Role values: STUDENT, EMPLOYER_OWNER, EMPLOYER_RECRUITER, ASSESSMENT_REVIEWER, PLATFORM_ADMIN
+// ----------------------------------------------------
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  passwordHash  String
+  name          String
+  role          String    @default("STUDENT") // STUDENT, EMPLOYER_OWNER, EMPLOYER_RECRUITER, ASSESSMENT_REVIEWER, PLATFORM_ADMIN
+  avatar        String?
+  phone         String?
+  bio           String?
+  isVerified    Boolean   @default(false)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  sessions      Session[]
+  studentProfile StudentProfile?
+  orgMemberships OrganizationMember[]
+  assessmentAttempts AssessmentAttempt[]
+  challengeSessions ChallengeSession[]
+  roadmaps      LearningRoadmap[]
+  learningSessions LearningSession[]
+  milestones    LearningMilestone[]
+  credentials   Credential[]
+  publicProfiles PublicSkillProofProfile[]
+  shortlists    CandidateShortlist[]
+  invitations   AssessmentInvitation[]
+  auditLogs     AuditLog[]
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  userId       String
+  sessionToken String   @unique
+  expiresAt    DateTime
+  ipAddress    String?
+  userAgent    String?
+  createdAt    DateTime @default(now())
+
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ----------------------------------------------------
+// Student Profile & Skill Progression
+// ----------------------------------------------------
+model StudentProfile {
+  id                 String   @id @default(cuid())
+  userId             String   @unique
+  university         String?
+  department         String?
+  graduationYear     Int?
+  educationStatus    String?  // Undergraduate, Graduate, Bootcamp, Self-taught
+  careerGoal         String   @default("junior_data_analyst")
+  weeklyStudyHours   Int      @default(8)
+  // Stored JSON map of skill_id -> self-reported proficiency level (0-5)
+  skillsJson         String   @default("{}")
+  // Stored JSON map of skill_id -> assessment history & answers
+  assessedSkillsJson String   @default("{}")
+  // Persisted AI guidance snapshot with timestamp & skill state
+  aiGuidanceJson     String?
+  // Optional user-configured Gemini API key & model
+  geminiApiKey       String?
+  geminiModel        String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  user               User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ----------------------------------------------------
+// Employer Organizations & Recruitment
+// ----------------------------------------------------
+model EmployerOrganization {
+  id          String   @id @default(cuid())
+  name        String
+  industry    String?
+  size        String?  // 1-10, 11-50, 51-200, 201-500, 500+
+  website     String?
+  description String?
+  logo        String?
+  isVerified  Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  members     OrganizationMember[]
+  jobs        Job[]
+  shortlists  CandidateShortlist[]
+  invitations AssessmentInvitation[]
+}
+
+model OrganizationMember {
+  id             String   @id @default(cuid())
+  organizationId String
+  userId         String
+  role           String   @default("RECRUITER") // OWNER, RECRUITER, ADMIN
+  createdAt      DateTime @default(now())
+
+  organization   EmployerOrganization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  user           User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([organizationId, userId])
+}
+
+model Job {
+  id              String   @id @default(cuid())
+  organizationId  String
+  title           String
+  description     String
+  careerCategory  String   // data, software, security, design
+  careerTrackId   String   @default("junior_data_analyst")
+  location        String   @default("Dhaka, Bangladesh (Hybrid)")
+  employmentType  String   @default("Full-time") // Full-time, Internship, Contract
+  salaryRange     String?
+  deadline        DateTime?
+  status          String   @default("OPEN") // OPEN, PAUSED, CLOSED
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  organization    EmployerOrganization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  requirements    JobSkillRequirement[]
+  shortlists      CandidateShortlist[]
+  invitations     AssessmentInvitation[]
+}
+
+model JobSkillRequirement {
+  id           String   @id @default(cuid())
+  jobId        String
+  skillId      String
+  targetLevel  Int      @default(3) // 1-5
+  weight       Int      @default(3) // 1-3
+  isRequired   Boolean  @default(true)
+
+  job          Job      @relation(fields: [jobId], references: [id], onDelete: Cascade)
+}
+
+model CandidateShortlist {
+  id             String   @id @default(cuid())
+  organizationId String
+  userId         String
+  jobId          String?
+  status         String   @default("REVIEWING") // REVIEWING, SHORTLISTED, INTERVIEWING, OFFERED, REJECTED
+  recruiterNotes String?
+  shortlistedAt  DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  organization   EmployerOrganization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  user           User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  job            Job?                 @relation(fields: [jobId], references: [id], onDelete: SetNull)
+
+  @@unique([organizationId, userId])
+}
+
+model AssessmentInvitation {
+  id             String   @id @default(cuid())
+  organizationId String
+  userId         String
+  jobId          String?
+  challengeId    String?
+  status         String   @default("PENDING") // PENDING, ACCEPTED, COMPLETED, EXPIRED
+  invitedAt      DateTime @default(now())
+  completedAt    DateTime?
+
+  organization   EmployerOrganization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  user           User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  job            Job?                 @relation(fields: [jobId], references: [id], onDelete: SetNull)
+}
+
+// ----------------------------------------------------
+// Diagnostic Assessments & MCQ Grader
+// ----------------------------------------------------
+model AssessmentAttempt {
+  id             String   @id @default(cuid())
+  userId         String
+  skillId        String
+  totalQuestions Int
+  correctCount   Int
+  answeredCount  Int
+  accuracy       Float
+  evidenceStatus String   // SOME_SUPPORTING_EVIDENCE, INCONCLUSIVE, CLAIM_NOT_SUPPORTED, UNASSESSED
+  answersJson    String   // Serialized map of question_id -> chosenOptionIndex
+  createdAt      DateTime @default(now())
+
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ----------------------------------------------------
+// SkillRoute Mission Arena (Practical Assessment)
+// ----------------------------------------------------
+model Challenge {
+  id             String   @id // e.g. "mission_sql_sales_performance"
+  title          String
+  titleBn        String?
+  category       String   // data, backend, frontend, security, design
+  careerTrackId  String   // junior_data_analyst, junior_backend_developer, etc.
+  difficulty     String   @default("Intermediate") // Beginner, Intermediate, Advanced
+  estimatedMinutes Int    @default(30)
+  scenario       String
+  scenarioBn     String?
+  instructions   String
+  instructionsBn String?
+  initialCode    String   @default("")
+  datasetJson    String?  // Seed relational tables/logs/context
+  rubricJson     String   // Assessment rubric criteria and points
+  passingScore   Int      @default(70)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  sessions       ChallengeSession[]
+}
+
+model ChallengeSession {
+  id                String    @id @default(cuid())
+  userId            String
+  challengeId       String
+  status            String    @default("IN_PROGRESS") // IN_PROGRESS, SUBMITTED, EVALUATED, ABANDONED
+  mode              String    @default("INDEPENDENT") // INDEPENDENT (Mode A), AI_ASSISTED (Mode B)
+  aiDisclosureNotes String?
+  blurredCount      Int       @default(0) // Telemetry signal for integrity
+  timeSpentSeconds  Int       @default(0)
+  score             Int       @default(0)
+  passed            Boolean   @default(false)
+  feedback          String?
+  codeSubmission    String    @default("")
+  evalResultsJson   String?
+  startedAt         DateTime  @default(now())
+  completedAt       DateTime?
+
+  user              User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  challenge         Challenge @relation(fields: [challengeId], references: [id], onDelete: Cascade)
+}
+
+// ----------------------------------------------------
+// Persistent Learning Roadmaps & Tracker
+// ----------------------------------------------------
+model LearningRoadmap {
+  id                       String   @id @default(cuid())
+  userId                   String
+  careerId                 String
+  weeklyStudyHours         Int      @default(8)
+  totalEffortHours         Float
+  totalWeeks               Int
+  fourWeekAllocatedHours   Float
+  remainingHoursBeyondWeek4 Float
+  weeksJson                String   // Serialized 4-week task structures and checkpoints
+  isActive                 Boolean  @default(true)
+  createdAt                DateTime @default(now())
+  updatedAt                DateTime @updatedAt
+
+  user                     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  activities               RoadmapActivity[]
+}
+
+model RoadmapActivity {
+  id          String    @id @default(cuid())
+  roadmapId   String
+  weekNumber  Int
+  skillId     String
+  title       String
+  titleBn     String?
+  hours       Float
+  completed   Boolean   @default(false)
+  completedAt DateTime?
+
+  roadmap     LearningRoadmap @relation(fields: [roadmapId], references: [id], onDelete: Cascade)
+}
+
+model LearningSession {
+  id              String   @id @default(cuid())
+  userId          String
+  skillId         String
+  durationMinutes Int
+  notes           String?
+  loggedAt        DateTime @default(now())
+
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model LearningMilestone {
+  id           String   @id @default(cuid())
+  userId       String
+  milestoneKey String   // e.g. "first_roadmap_started", "first_mission_solved", "sql_level_3"
+  title        String
+  titleBn      String?
+  completedAt  DateTime @default(now())
+
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, milestoneKey])
+}
+
+// ----------------------------------------------------
+// SkillProof Level 2 Credentials & Public Sharing
+// ----------------------------------------------------
+model Credential {
+  id              String    @id @default(cuid())
+  credentialId    String    @unique // Public verification ID (e.g. "SKILL-2026-SQL-9831")
+  userId          String
+  skillId         String
+  competencyTitle String
+  assessmentType  String    // PRACTICALLY_DEMONSTRATED, PROJECT_REVIEWED, EMPLOYER_VERIFIED
+  score           Float
+  verificationUrl String
+  status          String    @default("ACTIVE") // ACTIVE, REVOKED, EXPIRED
+  issuedAt        DateTime  @default(now())
+  revokedAt       DateTime?
+
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model PublicSkillProofProfile {
+  id              String    @id @default(cuid())
+  publicId        String    @unique // Cryptographically secure random UUID / slug
+  userId          String
+  targetCareerId  String    @default("junior_data_analyst")
+  consentedFields String    // JSON array of field names: ["name", "university", "careerGoal", "verifiedSkills", ...]
+  isPublic        Boolean   @default(true)
+  revokedAt       DateTime?
+  viewCount       Int       @default(0)
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// ----------------------------------------------------
+// System Security & Audit Logging
+// ----------------------------------------------------
+model AuditLog {
+  id           String   @id @default(cuid())
+  userId       String?
+  action       String   // e.g. "USER_LOGIN", "MISSION_SUBMITTED", "CREDENTIAL_ISSUED", "PROFILE_REVOKED"
+  resourceType String?  // User, Challenge, Credential, PublicProfile
+  resourceId   String?
+  details      String?
+  ipAddress    String?
+  createdAt    DateTime @default(now())
+
+  user         User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+}

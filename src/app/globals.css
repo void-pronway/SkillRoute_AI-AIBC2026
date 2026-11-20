@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-sage: #CFDBD5;
+  --brand-cream: #E8EDDF;
+  --brand-yellow: #F5CB5C;
+  --brand-black: #242423;
+  --brand-onyx: #333533;
+  
+  --bg-primary: #E8EDDF;
+  --bg-card: 255 255 255;
+  --text-primary: #242423;
+  --text-secondary: #333533;
+  --border-subtle: #CFDBD5;
+}
+
+.dark {
+  --bg-primary: #181817;
+  --bg-card: 36 36 35;
+  --text-primary: #E8EDDF;
+  --text-secondary: #CFDBD5;
+  --border-subtle: #333533;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', 'Hind Siliguri', -apple-system, BlinkMacSystemFont, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Dark mode container overrides (supports base class and opacity suffixes) */
+.dark .dark\:bg-brand-card,
+.dark [class*="dark:bg-brand-card"] {
+  background-color: #242423 !important;
+}
+
+/* Ensure inputs, selects and textareas are clearly readable in dark mode */
+.dark input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),
+.dark select,
+.dark textarea {
+  background-color: #242423 !important;
+  color: #E8EDDF !important;
+  border-color: #333533 !important;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #8C928F !important;
+}
+
+/* Accessibility focus ring */
+:focus-visible {
+  outline: 2px solid #F5CB5C;
+  outline-offset: 2px;
+}
+
+/* Print stylesheet for SkillProof portfolio */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 12mm 15mm;
+  }
+  header, nav, footer, .no-print {
+    display: none !important;
+  }
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    font-size: 10pt;
+  }
+  main, div, section {
+    box-shadow: none !important;
+    background-image: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  .page-break-inside-avoid {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+}
