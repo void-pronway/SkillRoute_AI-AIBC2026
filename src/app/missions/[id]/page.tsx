@@ -16,7 +16,8 @@ import {
   FileText, 
   Sparkles,
   ExternalLink,
-  Table
+  Table,
+  Zap
 } from "lucide-react";
 
 export default function MissionWorkspacePage() {
@@ -114,7 +115,7 @@ export default function MissionWorkspacePage() {
   }
 
   return (
-    <div className="flex-1 max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 py-6 w-full space-y-6">
+    <div className="flex-1 w-full max-w-[96%] 2xl:max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
       {/* -------------------------------------------------------------
           Top Navigation Bar
       ------------------------------------------------------------- */}
@@ -292,8 +293,8 @@ export default function MissionWorkspacePage() {
                   className="px-2.5 py-1 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-brand-yellow text-[11px] font-bold border border-amber-500/40 flex items-center space-x-1 transition-all"
                   title="Loads verified full-mark solution for live demo evaluation"
                 >
-                  <Sparkles className="w-3 h-3 text-brand-yellow" />
-                  <span>⚡ {lang === "bn" ? "১০০ নম্বরের সমাধান লোড করুন" : "Load Verified Solution (100 Pts)"}</span>
+                  <Zap className="w-3 h-3 text-brand-yellow" />
+                  <span>{lang === "bn" ? "১০০ নম্বরের সমাধান লোড করুন" : "Load Verified Solution (100 Pts)"}</span>
                 </button>
                 <button
                   onClick={() => setSubmission(challenge.initialCode || "")}

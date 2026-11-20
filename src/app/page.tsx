@@ -21,7 +21,10 @@ import {
   FileText, 
   Layers,
   ChevronRight,
-  HelpCircle
+  HelpCircle,
+  GraduationCap,
+  Building2,
+  Zap
 } from "lucide-react";
 
 export default function LandingPage() {
@@ -96,7 +99,7 @@ export default function LandingPage() {
         {/* Subtle decorative background circles */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-brand-yellow/15 dark:bg-brand-yellow/5 rounded-full blur-3xl -z-10 pointer-events-none" />
 
-        <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12">
+        <div className="w-full max-w-[96%] 2xl:max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left Column: Value Proposition & CTAs */}
             <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
@@ -178,7 +181,9 @@ export default function LandingPage() {
                     className="w-full p-3 rounded-xl bg-brand-cream/80 dark:bg-[#181817] hover:bg-brand-sage/50 dark:hover:bg-brand-onyx border border-brand-sage/60 dark:border-brand-onyx hover:border-brand-yellow dark:hover:border-brand-yellow flex items-center justify-between transition-all group"
                   >
                     <div className="flex items-center space-x-2.5 text-left">
-                      <span className="text-lg">👨‍🎓</span>
+                      <div className="w-8 h-8 rounded-lg bg-amber-500/15 dark:bg-brand-yellow/15 flex items-center justify-center flex-shrink-0">
+                        <GraduationCap className="w-4 h-4 text-amber-600 dark:text-brand-yellow" />
+                      </div>
                       <div>
                         <span className="text-xs font-bold text-brand-black dark:text-[#E8EDDF] block group-hover:text-amber-600 dark:group-hover:text-brand-yellow">
                           {lang === "bn" ? "শিক্ষার্থী ডেমো পোর্টাল" : "Student Demo Portal"}
@@ -196,7 +201,9 @@ export default function LandingPage() {
                     className="w-full p-3 rounded-xl bg-brand-cream/80 dark:bg-[#181817] hover:bg-brand-sage/50 dark:hover:bg-brand-onyx border border-brand-sage/60 dark:border-brand-onyx hover:border-brand-yellow dark:hover:border-brand-yellow flex items-center justify-between transition-all group"
                   >
                     <div className="flex items-center space-x-2.5 text-left">
-                      <span className="text-lg">🏢</span>
+                      <div className="w-8 h-8 rounded-lg bg-blue-500/15 dark:bg-blue-400/15 flex items-center justify-center flex-shrink-0">
+                        <Building2 className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                      </div>
                       <div>
                         <span className="text-xs font-bold text-brand-black dark:text-[#E8EDDF] block group-hover:text-amber-600 dark:group-hover:text-brand-yellow">
                           {lang === "bn" ? "নিয়োগকারী ট্যালেন্ট পোর্টাল" : "Employer Talent Portal"}
@@ -214,7 +221,9 @@ export default function LandingPage() {
                     className="w-full p-3 rounded-xl bg-brand-cream/80 dark:bg-[#181817] hover:bg-brand-sage/50 dark:hover:bg-brand-onyx border border-brand-sage/60 dark:border-brand-onyx hover:border-brand-yellow dark:hover:border-brand-yellow flex items-center justify-between transition-all group"
                   >
                     <div className="flex items-center space-x-2.5 text-left">
-                      <span className="text-lg">🛡️</span>
+                      <div className="w-8 h-8 rounded-lg bg-emerald-500/15 dark:bg-emerald-400/15 flex items-center justify-center flex-shrink-0">
+                        <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                      </div>
                       <div>
                         <span className="text-xs font-bold text-brand-black dark:text-[#E8EDDF] block group-hover:text-amber-600 dark:group-hover:text-brand-yellow">
                           {lang === "bn" ? "প্ল্যাটফর্ম অ্যাডমিন কনসোল" : "Platform Admin Console"}
@@ -257,7 +266,7 @@ export default function LandingPage() {
           2. The 4 Product Pillars
       ------------------------------------------------------------- */}
       <section className="py-16 md:py-24 bg-white dark:bg-brand-darkBg/60 border-b border-brand-sage/40 dark:border-brand-onyx transition-colors">
-        <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12">
+        <div className="w-full max-w-[96%] 2xl:max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-black dark:text-brand-cream tracking-tight">
               {lang === "bn" ? "স্কিলরুট কীভাবে কাজ করে" : "How SkillRoute AI Transforms Workforce Readiness"}
@@ -361,7 +370,7 @@ export default function LandingPage() {
           3. Five Career Tracks Showcase
       ------------------------------------------------------------- */}
       <section className="py-16 md:py-24 bg-brand-cream dark:bg-brand-darkBg border-b border-brand-sage/40 dark:border-brand-onyx transition-colors">
-        <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12">
+        <div className="w-full max-w-[96%] 2xl:max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-amber-600 dark:text-brand-yellow block mb-1">
@@ -450,7 +459,7 @@ export default function LandingPage() {
           4. Mission Arena Interactive Spotlight
       ------------------------------------------------------------- */}
       <section className="py-16 md:py-24 bg-white dark:bg-brand-darkBg/60 border-b border-brand-sage/40 dark:border-brand-onyx transition-colors">
-        <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12">
+        <div className="w-full max-w-[96%] 2xl:max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
               <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 text-amber-600 dark:text-brand-yellow text-xs font-bold">
@@ -531,7 +540,7 @@ ORDER BY total_revenue DESC;`}
           5. Frequently Asked Questions (FAQ)
       ------------------------------------------------------------- */}
       <section className="py-16 md:py-24 bg-brand-cream dark:bg-brand-darkBg transition-colors">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full max-w-5xl 2xl:max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-black dark:text-brand-cream tracking-tight">
               {lang === "bn" ? "সচরাচর জিজ্ঞাসিত প্রশ্নাবলী (FAQ)" : "Frequently Asked Questions"}

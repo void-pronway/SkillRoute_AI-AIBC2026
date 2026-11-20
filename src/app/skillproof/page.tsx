@@ -19,7 +19,8 @@ import {
   Layers,
   Sparkles,
   ChevronRight,
-  Clock
+  Clock,
+  Zap
 } from "lucide-react";
 import { SkillEvidenceBadge } from "@/components/SkillEvidenceBadge";
 import { resolveSkillEvidenceTier, EVIDENCE_TIERS } from "@/logic/evidenceTier";
@@ -249,8 +250,8 @@ export default function SkillProofPage() {
         const data = await res.json();
         setAwardSuccessMsg(
           lang === "bn"
-            ? `🎉 চমৎকার! স্কিলরুট এআই কর্তৃক প্রজেক্ট মূল্যায়িত হয়েছে এবং স্তর ৪ ক্রেডেনশিয়াল (${data.credential.credentialId}) প্রদান করা হয়েছে! আপনার পোর্টফোলিও এখন লেভেল ৪-এ উন্নীত হয়েছে।`
-            : `🎉 Outstanding! SkillRoute AI evaluated your project and issued Tier 4 Credential (${data.credential.credentialId})! Your portfolio has upgraded to Level 4.`
+            ? `চমৎকার! স্কিলরুট এআই কর্তৃক প্রজেক্ট মূল্যায়িত হয়েছে এবং স্তর ৪ ক্রেডেনশিয়াল (${data.credential.credentialId}) প্রদান করা হয়েছে! আপনার পোর্টফোলিও এখন লেভেল ৪-এ উন্নীত হয়েছে।`
+            : `Outstanding! SkillRoute AI evaluated your project and issued Tier 4 Credential (${data.credential.credentialId})! Your portfolio has upgraded to Level 4.`
         );
         await fetchCredentials();
       } else {
@@ -283,7 +284,7 @@ export default function SkillProofPage() {
   };
 
   return (
-    <div className="flex-1 max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 py-8 w-full space-y-8">
+    <div className="flex-1 w-full max-w-[96%] 2xl:max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       {/* -------------------------------------------------------------
           Print-Only Official Institutional Credential Header
       ------------------------------------------------------------- */}
@@ -643,11 +644,11 @@ export default function SkillProofPage() {
                 disabled={isSubmittingProject}
                 className="w-full py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs flex items-center justify-center space-x-1.5 shadow-xs transition-colors disabled:opacity-50"
               >
-                <Sparkles className="w-3.5 h-3.5 text-blue-200" />
+                <Zap className="w-3.5 h-3.5 text-blue-200" />
                 <span>
                   {isSubmittingProject
                     ? (lang === "bn" ? "স্কিলরুট এআই মূল্যায়ন সম্পন্ন করছে..." : "SkillRoute AI Evaluating Project...")
-                    : (lang === "bn" ? "⚡ প্রজেক্ট জমা দিয়ে স্কিলরুট এআই মূল্যায়ন সম্পন্ন করুন (স্তর ৪)" : "⚡ Submit Project for SkillRoute AI Evaluation (Tier 4)")}
+                    : (lang === "bn" ? "প্রজেক্ট জমা দিয়ে স্কিলরুট এআই মূল্যায়ন সম্পন্ন করুন (স্তর ৪)" : "Submit Project for SkillRoute AI Evaluation (Tier 4)")}
                 </span>
               </button>
             </div>
@@ -706,8 +707,8 @@ export default function SkillProofPage() {
                   </div>
                   <p className="text-[11px] text-brand-onyx/80 dark:text-brand-sage/80 leading-relaxed">
                     {lang === "bn"
-                      ? "আপনার পাবলিক স্কিলপ্রুফ™ লিংক নিয়োগকারী বা ইন্টারভিউয়ারের সাথে শেয়ার করুন। তারা নিয়োগকারী পোর্টালে আপনার ডসিয়ার খুলে '⚡ Endorse Candidate' ক্লিক করে এই ব্যাজ প্রদান করবেন।"
-                      : "Share your public SkillProof™ portfolio link with hiring recruiters. When employers review your Evidence Dossier in the Employer Portal, they can click '⚡ Endorse Candidate' to certify this badge."}
+                      ? "আপনার পাবলিক স্কিলপ্রুফ™ লিংক নিয়োগকারী বা ইন্টারভিউয়ারের সাথে শেয়ার করুন। তারা নিয়োগকারী পোর্টালে আপনার ডসিয়ার খুলে 'Endorse Candidate' ক্লিক করে এই ব্যাজ প্রদান করবেন।"
+                      : "Share your public SkillProof™ portfolio link with hiring recruiters. When employers review your Evidence Dossier in the Employer Portal, they can click 'Endorse Candidate' to certify this badge."}
                   </p>
                 </div>
               )}
@@ -720,7 +721,7 @@ export default function SkillProofPage() {
                 <ol className="list-decimal list-inside space-y-1 text-[11px] text-brand-onyx/80 dark:text-brand-sage/80">
                   <li>{lang === "bn" ? "নিয়োগকারী অ্যাকাউন্ট (যেমন TechNext Ltd.)-এ লগইন করেন।" : "Employer logs into Employer Portal (e.g. TechNext Ltd.)."}</li>
                   <li>{lang === "bn" ? "ক্যান্ডিডেট তালিকায় প্রার্থীর 'View Evidence Profile' ডসিয়ার খোলেন।" : "Opens candidate's 'View Evidence Profile' dossier."}</li>
-                  <li>{lang === "bn" ? "দক্ষতা যাচাই করে '⚡ Endorse Candidate (Award Tier 5 Badge)' ক্লিক করেন।" : "Selects skill and clicks '⚡ Endorse Candidate (Award Tier 5 Badge)'."}</li>
+                  <li>{lang === "bn" ? "দক্ষতা যাচাই করে 'Endorse Candidate (Award Tier 5 Badge)' ক্লিক করেন।" : "Selects skill and clicks 'Endorse Candidate (Award Tier 5 Badge)'."}</li>
                 </ol>
               </div>
             </div>

@@ -81,7 +81,7 @@ export default function PublicPortfolioPage() {
   }
 
   return (
-    <div className="flex-1 max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 py-10 w-full space-y-8">
+    <div className="flex-1 w-full max-w-[96%] 2xl:max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
       {/* -------------------------------------------------------------
           Public Portfolio Header
       ------------------------------------------------------------- */}

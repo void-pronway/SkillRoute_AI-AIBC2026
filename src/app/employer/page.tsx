@@ -23,7 +23,8 @@ import {
   X,
   UserCheck,
   FileText,
-  Check
+  Check,
+  Zap
 } from "lucide-react";
 import { SkillEvidenceBadge } from "@/components/SkillEvidenceBadge";
 import { resolveSkillEvidenceTier, EVIDENCE_TIERS } from "@/logic/evidenceTier";
@@ -160,8 +161,8 @@ export default function EmployerPortalPage() {
         const data = await res.json();
         const successMsg =
           lang === "bn"
-            ? `🏆 ${candidate.name}-কে ${selectedSkill.toUpperCase()} এর জন্য সফলভাবে সত্যায়িত করা হয়েছে! স্তর ৫ নিয়োগকারী সত্যায়িত ব্যাজ প্রদান করা হলো।`
-            : `🏆 Successfully endorsed ${candidate.name} for ${selectedSkill.toUpperCase()}! Tier 5 Employer Verified badge awarded.`;
+            ? `✓ ${candidate.name}-কে ${selectedSkill.toUpperCase()} এর জন্য সফলভাবে সত্যায়িত করা হয়েছে! স্তর ৫ নিয়োগকারী সত্যায়িত ব্যাজ প্রদান করা হলো।`
+            : `✓ Successfully endorsed ${candidate.name} for ${selectedSkill.toUpperCase()}! Tier 5 Employer Verified badge awarded.`;
         setEndorseSuccessMsg(successMsg);
         setShortlistToast({ message: successMsg, candidateName: candidate.name });
 
@@ -238,7 +239,7 @@ export default function EmployerPortalPage() {
   };
 
   return (
-    <div className="flex-1 max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 py-8 w-full space-y-6">
+    <div className="flex-1 w-full max-w-[96%] 2xl:max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
       {/* -------------------------------------------------------------
           Shortlist & Action Confirmation Banner Toast
       ------------------------------------------------------------- */}
@@ -736,9 +737,9 @@ export default function EmployerPortalPage() {
                   disabled={isEndorsing}
                   className="w-full sm:w-auto px-5 py-2 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs flex items-center justify-center space-x-1.5 shadow-xs transition-colors disabled:opacity-50"
                 >
-                  <UserCheck className="w-4 h-4" />
+                  <Zap className="w-4 h-4 text-brand-yellow" />
                   <span>
-                    {isEndorsing ? "Endorsing Candidate..." : "⚡ Endorse Candidate (Award Tier 5 Badge)"}
+                    {isEndorsing ? "Endorsing Candidate..." : "Endorse Candidate (Award Tier 5 Badge)"}
                   </span>
                 </button>
               </div>

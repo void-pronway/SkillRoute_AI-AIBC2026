@@ -70,7 +70,7 @@ export function Navbar() {
 
   return (
     <header className="no-print sticky top-0 z-50 bg-brand-cream/90 dark:bg-brand-black/95 backdrop-blur-md border-b border-brand-sage/40 dark:border-brand-onyx transition-colors">
-      <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12">
+      <div className="w-full max-w-[96%] 2xl:max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo & Brand */}
           <Link href="/" className="flex items-center space-x-3 group">

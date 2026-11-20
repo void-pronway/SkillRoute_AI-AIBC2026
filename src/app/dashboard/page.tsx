@@ -38,7 +38,8 @@ import {
   FileText,
   Key,
   RefreshCw,
-  Lock
+  Lock,
+  Zap
 } from "lucide-react";
 
 export default function StudentDashboardPage() {
@@ -675,7 +676,7 @@ export default function StudentDashboardPage() {
   }, [effectiveRoadmap]);
 
   return (
-    <div className="flex-1 w-full max-w-[1780px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-6 space-y-6">
+    <div className="flex-1 w-full max-w-[96%] 2xl:max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
       {/* -------------------------------------------------------------
           Header Banner & Student Summary (With Inline Name Editing)
       ------------------------------------------------------------- */}
@@ -750,8 +751,8 @@ export default function StudentDashboardPage() {
             onClick={handleLoadDemoPersona}
             className="px-3 py-1.5 rounded-xl bg-brand-cream dark:bg-brand-onyx hover:bg-brand-sage/50 dark:hover:bg-brand-onyx/80 text-brand-black dark:text-brand-cream border border-brand-sage/60 dark:border-brand-onyx text-xs font-semibold flex items-center space-x-1.5 shadow-xs transition-colors"
           >
-            <Sparkles className="w-3.5 h-3.5 text-amber-500 dark:text-brand-yellow" />
-            <span>⚡ {lang === "bn" ? "বেঞ্চমার্ক A লোড করুন" : "Load Benchmark A"}</span>
+            <Zap className="w-3.5 h-3.5 text-amber-500 dark:text-brand-yellow" />
+            <span>{lang === "bn" ? "বেঞ্চমার্ক A লোড করুন" : "Load Benchmark A"}</span>
           </button>
           <button
             onClick={handleTriggerBenchmarkB}
@@ -1177,8 +1178,8 @@ export default function StudentDashboardPage() {
                     className="px-3 py-1.5 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 text-amber-700 dark:text-brand-yellow border border-amber-500/40 text-xs font-bold flex items-center space-x-1.5 transition-all shadow-xs"
                     title="Fill all correct answers across all questions for rapid demonstration"
                   >
-                    <Sparkles className="w-3.5 h-3.5 text-amber-500 dark:text-brand-yellow" />
-                    <span>⚡ {t("btnFillAllCorrect")}</span>
+                    <Zap className="w-3.5 h-3.5 text-amber-500 dark:text-brand-yellow" />
+                    <span>{t("btnFillAllCorrect")}</span>
                   </button>
 
                   {/* Bug 2 Fix: Clear answers button */}
@@ -1263,8 +1264,8 @@ export default function StudentDashboardPage() {
                             className="text-[11px] font-bold px-2.5 py-1 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-amber-700 dark:text-brand-yellow border border-amber-500/30 flex items-center space-x-1 transition-all"
                             title="Select the verified correct answer for this question"
                           >
-                            <Sparkles className="w-3 h-3 text-amber-500 dark:text-brand-yellow" />
-                            <span>⚡ {t("btnFillCorrect")}</span>
+                            <Zap className="w-3 h-3 text-amber-500 dark:text-brand-yellow" />
+                            <span>{t("btnFillCorrect")}</span>
                           </button>
                         )}
                         <span className="text-[11px] text-brand-onyx/60 dark:text-brand-sage/60 font-medium">
@@ -1364,8 +1365,8 @@ export default function StudentDashboardPage() {
                           className="px-3 py-1.5 rounded-xl bg-amber-500/15 hover:bg-amber-500/25 text-amber-700 dark:text-brand-yellow border border-amber-500/40 text-xs font-bold flex items-center space-x-1 transition-all"
                           title="1-Click solve practical mission for demo and issue Tier 3 credential"
                         >
-                          <Sparkles className="w-3.5 h-3.5 text-amber-500 dark:text-brand-yellow" />
-                          <span>{missionSolvingId === m.id ? "Solving..." : `⚡ ${t("btnOneClickSolveMission")}`}</span>
+                          <Zap className="w-3.5 h-3.5 text-amber-500 dark:text-brand-yellow" />
+                          <span>{missionSolvingId === m.id ? "Solving..." : t("btnOneClickSolveMission")}</span>
                         </button>
 
                         <Link
@@ -1998,7 +1999,7 @@ export default function StudentDashboardPage() {
                     {loadingAi
                       ? (lang === "bn" ? "এআই কোচের পরামর্শ তৈরি হচ্ছে..." : "Consulting AI Coach...")
                       : isGuidanceStale
-                      ? (lang === "bn" ? "🔄 নতুন দক্ষতার ভিত্তিতে এআই গাইডেন্স রিফ্রেশ করুন" : "🔄 Refresh Guidance for Updated Skills")
+                      ? (lang === "bn" ? "নতুন দক্ষতার ভিত্তিতে এআই গাইডেন্স রিফ্রেশ করুন" : "Refresh Guidance for Updated Skills")
                       : aiGuidance
                       ? (lang === "bn" ? "পুনরায় এআই গাইডেন্স রিফ্রেশ করুন" : "Refresh AI Guidance")
                       : t("btnGenerateAiGuidance")}
@@ -2146,7 +2147,10 @@ export default function StudentDashboardPage() {
                 onClick={handleLoadDemoPersona}
                 className="w-full p-2.5 rounded-xl bg-brand-cream/70 dark:bg-brand-onyx/60 hover:bg-brand-sage/50 dark:hover:bg-brand-onyx text-xs font-bold text-brand-black dark:text-brand-cream border border-brand-sage/60 dark:border-brand-onyx flex items-center justify-between transition-colors"
               >
-                <span>⚡ Benchmark A (SQL 2/5)</span>
+                <span className="flex items-center gap-1.5">
+                  <Zap className="w-3.5 h-3.5 text-amber-500 dark:text-brand-yellow" />
+                  <span>Benchmark A (SQL 2/5)</span>
+                </span>
                 <span className="text-amber-600 dark:text-brand-yellow">58.33% / 80h</span>
               </button>
               <button
@@ -2154,7 +2158,10 @@ export default function StudentDashboardPage() {
                 onClick={handleTriggerBenchmarkB}
                 className="w-full p-2.5 rounded-xl bg-brand-yellow/80 hover:bg-brand-yellow text-xs font-bold text-brand-black flex items-center justify-between transition-colors shadow-xs"
               >
-                <span>⚡ Benchmark B (SQL 3/5)</span>
+                <span className="flex items-center gap-1.5">
+                  <Zap className="w-3.5 h-3.5 text-brand-black" />
+                  <span>Benchmark B (SQL 3/5)</span>
+                </span>
                 <span>66.67% / 70h</span>
               </button>
             </div>

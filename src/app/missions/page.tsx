@@ -56,7 +56,7 @@ export default function MissionArenaIndexPage() {
     : missions.filter((m) => m.category === selectedCategory);
 
   return (
-    <div className="flex-1 max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 py-8 w-full space-y-8">
+    <div className="flex-1 w-full max-w-[96%] 2xl:max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       {/* -------------------------------------------------------------
           Header Banner
       ------------------------------------------------------------- */}

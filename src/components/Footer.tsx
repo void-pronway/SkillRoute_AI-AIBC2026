@@ -10,7 +10,7 @@ export function Footer() {
 
   return (
     <footer className="no-print mt-auto bg-white dark:bg-brand-black border-t border-brand-sage/60 dark:border-brand-onyx text-brand-onyx dark:text-brand-sage transition-colors">
-      <div className="max-w-[1720px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 py-10">
+      <div className="w-full max-w-[96%] 2xl:max-w-[95%] mx-auto px-4 sm:px-6 lg:px-8 py-10">
         {/* Responsible AI Notice */}
         <div className="mb-8 p-4 rounded-xl bg-brand-cream/60 dark:bg-brand-onyx/40 border border-brand-sage/50 dark:border-brand-onyx flex items-start space-x-3">
           <ShieldCheck className="w-5 h-5 text-amber-500 dark:text-brand-yellow flex-shrink-0 mt-0.5" />
