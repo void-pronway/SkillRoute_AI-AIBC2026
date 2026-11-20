@@ -2,6 +2,9 @@
   "name": "skillroute-ai",
   "version": "2.0.0",
   "private": true,
+  "engines": {
+    "node": ">=18.0.0 <=20.x"
+  },
   "description": "SkillRoute AI 2.0 — AI-Assisted Workforce Development, Skill Assessment, Evidence-Based Credentialing and Talent Recruitment Platform",
   "scripts": {
     "dev": "next dev",

@@ -7,6 +7,10 @@ services:
     buildCommand: npm install && npx prisma db push && node scripts/seed.js && npm run build
     startCommand: npx prisma db push && node scripts/seed.js && npm start
     envVars:
+      - key: NODE_VERSION
+        value: 20.18.0
+      - key: NODE_OPTIONS
+        value: --max-old-space-size=400
       - key: DATABASE_URL
         value: file:./dev.db
       - key: SESSION_SECRET
