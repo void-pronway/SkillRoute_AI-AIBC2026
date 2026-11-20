@@ -46,117 +46,124 @@ The platform includes four pre-seeded demo personas configured with real DIU aca
 
 ## 📸 Visual UI & Feature Walkthrough Gallery
 
-This section illustrates the core user interfaces of SkillRoute AI. All screenshot placeholders are mapped to `docs/screenshots/`. You can view the pre-bundled captures or drop your own captures into `docs/screenshots/` using the specified filenames.
+This interactive visual gallery illustrates the core workflows of **SkillRoute AI**.  
+👉 **Click on any image to open the full-resolution screenshot in a new tab.**
 
----
+<table>
+  <tr>
+    <td width="50%" valign="top" align="center">
+      <a href="docs/screenshots/01_landing_page.png">
+        <img src="docs/screenshots/01_landing_page.png" alt="Landing Page" width="100%" />
+      </a>
+      <br />
+      <strong>1. Landing Page (Modern Design System)</strong>
+      <br />
+      <sub>Dark/Light mode, bilingual toggle, full widescreen layout with 1-click test accounts.</sub>
+    </td>
+    <td width="50%" valign="top" align="center">
+      <a href="docs/screenshots/02_student_step1_skills.png">
+        <img src="docs/screenshots/02_student_step1_skills.png" alt="Student Step 1 Skill Profile" width="100%" />
+      </a>
+      <br />
+      <strong>2. Step 1: Skill Profile Calibration & Step Lock</strong>
+      <br />
+      <sub>Competency sliders (0–5), study capacity allocation, and strict sequential step enforcement.</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top" align="center">
+      <a href="docs/screenshots/03_student_step2_assessment.png">
+        <img src="docs/screenshots/03_student_step2_assessment.png" alt="Assessment Hub" width="100%" />
+      </a>
+      <br />
+      <strong>3. Step 2: Assessment Hub (1-Click Solvers)</strong>
+      <br />
+      <sub>Standardized diagnostic MCQs with demo autofill tools and live observational evidence grading.</sub>
+    </td>
+    <td width="50%" valign="top" align="center">
+      <a href="docs/screenshots/04_student_step3_career_matches.png">
+        <img src="docs/screenshots/04_student_step3_career_matches.png" alt="Career Compatibility" width="100%" />
+      </a>
+      <br />
+      <strong>4. Step 3: Career Compatibility & Gap Analysis</strong>
+      <br />
+      <sub>Deterministic Euclidean matching, match %, effort hours, timeline, and dynamic role selection.</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top" align="center">
+      <a href="docs/screenshots/05_student_step4_roadmap_tracker.png">
+        <img src="docs/screenshots/05_student_step4_roadmap_tracker.png" alt="Roadmap Tracker" width="100%" />
+      </a>
+      <br />
+      <strong>5. Step 4: 4-Week Roadmap & Persistent Tracker</strong>
+      <br />
+      <sub>Capacity-constrained study milestones, interactive task checkoffs, and study session logger.</sub>
+    </td>
+    <td width="50%" valign="top" align="center">
+      <a href="docs/screenshots/06_student_step4_gemini_ai_coach.png">
+        <img src="docs/screenshots/06_student_step4_gemini_ai_coach.png" alt="Google Gemini AI Coach" width="100%" />
+      </a>
+      <br />
+      <strong>6. Step 4: Google Gemini AI Learning Coach</strong>
+      <br />
+      <sub>Contextual AI coaching via gemini-3.5-flash-lite, gap remediation, and stale-state alert.</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top" align="center">
+      <a href="docs/screenshots/07_mission_arena_evaluator.png">
+        <img src="docs/screenshots/07_mission_arena_evaluator.png" alt="Mission Arena Workspace" width="100%" />
+      </a>
+      <br />
+      <strong>7. Mission Arena (Practical Coding Workspace)</strong>
+      <br />
+      <sub>In-browser coding challenge with test runner, Mode A/B integrity grading, and 1-click solver.</sub>
+    </td>
+    <td width="50%" valign="top" align="center">
+      <a href="docs/screenshots/08_skillproof_five_tier_portfolio.png">
+        <img src="docs/screenshots/08_skillproof_five_tier_portfolio.png" alt="SkillProof Portfolio" width="100%" />
+      </a>
+      <br />
+      <strong>8. SkillProof™ Evidence Portfolio & Badges</strong>
+      <br />
+      <sub>5-Tier competency badges, Tier 4 AI rubric project review, and Tier 5 employer authorization.</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top" align="center">
+      <a href="docs/screenshots/09_credential_qr_verification.png">
+        <img src="docs/screenshots/09_credential_qr_verification.png" alt="Credential Verification" width="100%" />
+      </a>
+      <br />
+      <strong>9. Cryptographic Credential QR Verification</strong>
+      <br />
+      <sub>Publicly verifiable credential certificate with SHA-256 hash, dynamic QR code, and issuer seal.</sub>
+    </td>
+    <td width="50%" valign="top" align="center">
+      <a href="docs/screenshots/10_employer_candidate_shortlist.png">
+        <img src="docs/screenshots/10_employer_candidate_shortlist.png" alt="Employer Shortlist Feedback" width="100%" />
+      </a>
+      <br />
+      <strong>10. Employer Discovery & Shortlist Feedback Toast</strong>
+      <br />
+      <sub>Multi-filter candidate discovery, verified skill pills, and instant emerald shortlist notification.</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="100%" valign="top" align="center" colspan="2">
+      <a href="docs/screenshots/11_employer_candidate_dossier_tier5.png">
+        <img src="docs/screenshots/11_employer_candidate_dossier_tier5.png" alt="Candidate Dossier & Tier 5 Endorsement" width="60%" />
+      </a>
+      <br />
+      <strong>11. Candidate Evidence Dossier Modal & Tier 5 Institutional Endorsement</strong>
+      <br />
+      <sub>Deep candidate profile inspection and 1-click live institutional Tier 5 endorsement awarding.</sub>
+    </td>
+  </tr>
+</table>
 
-### 1. Landing Page (Modern Dark & Light Design System)
-*A high-conversion entrance highlighting the five-tier evidence model, employer partnerships, and student pathways.*
-
-![Landing Page](docs/screenshots/01_landing_page.png)
-
-> 💡 **Screenshot Placeholder:** `docs/screenshots/01_landing_page.png`  
-> **Key UI Features:** Dark/Light theme toggle, bilingual language switch (English / Bengali), responsive widescreen grid (`max-w-[1720px]`), direct CTA buttons for students and employers.
-
----
-
-### 2. Step 1: Technical Skill Profile Calibration & Sequential Step Lock
-*Students calibrate their competency sliders and study availability with strict sequential step enforcement.*
-
-![Student Step 1 Skill Profile](docs/screenshots/02_student_step1_skills.png)
-
-> 💡 **Screenshot Placeholder:** `docs/screenshots/02_student_step1_skills.png`  
-> **Key UI Features:** Skill competency sliders (Levels 0–5), catalog skill selector (*SQL, Python, REST APIs, Git, Docker, etc.*), weekly study hours allocation (2–40 hrs/wk), Benchmark A/B quick calibration buttons, and step-locking banner preventing skipping ahead.
-
----
-
-### 3. Step 2: Assessment Hub with 1-Click Fast-Track Demo Solvers
-*Standardized diagnostic tests evaluating theoretical comprehension with demo autofill tools for judges.*
-
-![Assessment Hub](docs/screenshots/03_student_step2_assessment.png)
-
-> 💡 **Screenshot Placeholder:** `docs/screenshots/03_student_step2_assessment.png`  
-> **Key UI Features:** Multi-category diagnostic MCQs, per-question `Fill Correct Answer` button, global `Fill All Correct Answers (Demo)` tool, live observational evidence grader issuing Tier 2 credentials upon completion.
-
----
-
-### 4. Step 3: Career Compatibility & Skill Gap Analysis
-*Transparent Euclidean matching evaluating compatibility, estimated effort, and completion timelines.*
-
-![Career Compatibility](docs/screenshots/04_student_step3_career_matches.png)
-
-> 💡 **Screenshot Placeholder:** `docs/screenshots/04_student_step3_career_matches.png`  
-> **Key UI Features:** Employability Match %, Estimated Effort (hours), and Timeline (weeks) badges calculated deterministically; live Skill Gap breakdown comparing target thresholds against student tiers; dynamic role selection updating Step 4.
-
----
-
-### 5. Step 4: 4-Week Capacity-Constrained Roadmap & Persistent Task Tracker
-*Personalized curriculum dividing effort into weekly milestones with persistent progress checkoffs.*
-
-![Roadmap Tracker](docs/screenshots/05_student_step4_roadmap_tracker.png)
-
-> 💡 **Screenshot Placeholder:** `docs/screenshots/05_student_step4_roadmap_tracker.png`  
-> **Key UI Features:** Interactive task completion checkboxes with real-time progress bar; study session logging dialog (recording duration, topics, and notes); capacity limits preventing overload (e.g. 8 hrs/wk strictly allocates 32 hours across weeks 1–4).
-
----
-
-### 6. Step 4: Google Gemini AI Learning Coach
-*Context-aware AI mentor analyzing candidate skill gaps and generating persistent study plans.*
-
-![Google Gemini AI Coach](docs/screenshots/06_student_step4_gemini_ai_coach.png)
-
-> 💡 **Screenshot Placeholder:** `docs/screenshots/06_student_step4_gemini_ai_coach.png`  
-> **Key UI Features:** Direct Google Gemini API (`gemini-3.5-flash-lite`) integration; gap remediation strategies; interview preparation tips; stale-state detection alerting the student if profile skills change; persistent database storage of AI guidance.
-
----
-
-### 7. SkillRoute Mission Arena (Practical Coding Workspace)
-*In-browser engineering environments replacing multiple-choice guesswork with hands-on problem solving.*
-
-![Mission Arena Workspace](docs/screenshots/07_mission_arena_evaluator.png)
-
-> 💡 **Screenshot Placeholder:** `docs/screenshots/07_mission_arena_evaluator.png`  
-> **Key UI Features:** Monaco-style code editor; test case runner; Mode A (Independent Coding with undeclared AI detection penalty) vs. Mode B (Transparent AI Disclosure with 0 penalty); `1-Click Solve & Pass (Demo)` button for rapid judge evaluation; automatic issuance of Tier 3 credentials (`SR-PRAC-...`).
-
----
-
-### 8. SkillProof™ Evidence Portfolio & Five-Tier Badging
-*Comprehensive competency portfolio showcasing candidate mastery across all five tiers of evidence.*
-
-![SkillProof Portfolio](docs/screenshots/08_skillproof_five_tier_portfolio.png)
-
-> 💡 **Screenshot Placeholder:** `docs/screenshots/08_skillproof_five_tier_portfolio.png`  
-> **Key UI Features:** Dynamic Level 1–5 rank badge; Skill Competency Matrix showing verified levels; **Tier 4 Project Review submission form** (GitHub repo URL, artifact URL, project title evaluated by AI rubric); **Tier 5 Employer Verification notice** (strictly restricted from self-award); public portfolio publishing with granular privacy controls.
-
----
-
-### 9. Cryptographic Credential Verification Authority
-*Publicly verifiable credential view proving authenticity with tamper-resistant metadata.*
-
-![Credential Verification](docs/screenshots/09_credential_qr_verification.png)
-
-> 💡 **Screenshot Placeholder:** `docs/screenshots/09_credential_qr_verification.png`  
-> **Key UI Features:** Real-time scannable QR code encoding the verification URL; unique credential ID (`SR-...`); SHA-256 cryptographic verification signature; institutional issuer details and issuing authority disclaimer.
-
----
-
-### 10. Employer Recruitment Portal & Instant Shortlist Feedback
-*Talent acquisition engine allowing recruiters to filter by verified skill thresholds and track candidates.*
-
-![Employer Shortlist Feedback](docs/screenshots/10_employer_candidate_shortlist.png)
-
-> 💡 **Screenshot Placeholder:** `docs/screenshots/10_employer_candidate_shortlist.png`  
-> **Key UI Features:** Multi-filter candidate discovery; live competency pills; **Instant Emerald Toast Notification** confirming candidate shortlisting; dynamic button transition from `+ Shortlist Candidate` to `✓ Shortlisted`.
-
----
-
-### 11. Candidate Evidence Dossier Modal & Tier 5 Institutional Endorsement
-*Deep candidate profile view empowering employers to inspect evidence and award official endorsements.*
-
-![Candidate Evidence Dossier](docs/screenshots/11_employer_candidate_dossier_tier5.png)
-
-> 💡 **Screenshot Placeholder:** `docs/screenshots/11_employer_candidate_dossier_tier5.png`  
-> **Key UI Features:** Academic profile (DIU CSE, graduation year, contact); match fit score; five-tier verified skill list; issued credentials log; **`⚡ Endorse Candidate (Award Tier 5 Badge)`** interface allowing recruiters to select a skill and award an official Tier 5 credential live.
+> 💡 **Customizing Screenshots:** To replace any screenshot with your own custom capture, save your image into [`docs/screenshots/`](docs/screenshots/) using the corresponding filename (e.g. `01_landing_page.png`). See [docs/screenshots/README.md](docs/screenshots/README.md) for details.
 
 ---
 
