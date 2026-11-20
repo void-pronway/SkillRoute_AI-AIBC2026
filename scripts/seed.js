@@ -16,11 +16,14 @@ async function main() {
   // 1. Seed Student Persona (Benchmark A Initial Profile)
   const student = await prisma.user.upsert({
     where: { email: "student@skillroute.ai" },
-    update: { passwordHash: defaultPasswordHash },
+    update: {
+      name: "Pronway Prosoon Mitra",
+      passwordHash: defaultPasswordHash,
+    },
     create: {
       email: "student@skillroute.ai",
       passwordHash: defaultPasswordHash,
-      name: "Tanzim Hasan",
+      name: "Pronway Prosoon Mitra",
       role: "STUDENT",
       bio: "Undergraduate Computer Science student at Daffodil International University aspiring to be an Analytics Engineer.",
       isVerified: true,

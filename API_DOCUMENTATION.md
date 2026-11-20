@@ -16,7 +16,7 @@ All API routes are implemented using Next.js App Router route handlers with JSON
   ```json
   {
     "success": true,
-    "user": { "id": "...", "email": "student@skillroute.ai", "name": "Tanzim Hasan", "role": "STUDENT" }
+    "user": { "id": "...", "email": "student@skillroute.ai", "name": "Pronway Prosoon Mitra", "role": "STUDENT" }
   }
   ```
 
