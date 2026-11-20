@@ -1,10 +1,11 @@
-# SkillRoute AI 2.0 — From Learning to Employability
+# SkillRoute AI — From Learning to Employability
 
 <p align="center">
   <strong>AI-Assisted Workforce Development, Practical Skill Assessment, Five-Tier Evidence-Based Credentialing & Talent Acquisition Platform</strong>
 </p>
 
 <p align="center">
+  <img src="https://img.shields.io/badge/Version-2.0.0-blue?style=for-the-badge" alt="Version 2.0.0" />
   <img src="https://img.shields.io/badge/Next.js-14.2-black?style=for-the-badge&logo=next.js" alt="Next.js" />
   <img src="https://img.shields.io/badge/TypeScript-5.6-blue?style=for-the-badge&logo=typescript" alt="TypeScript" />
   <img src="https://img.shields.io/badge/Prisma-5.22-2D3748?style=for-the-badge&logo=prisma" alt="Prisma" />
@@ -18,7 +19,7 @@
 
 ## 📌 Executive Summary
 
-**SkillRoute AI 2.0** is an enterprise-ready, evidence-based workforce readiness and recruitment platform engineered to eliminate the persistent mismatch between university academic output and real-world tech industry expectations. 
+**SkillRoute AI** is an enterprise-ready, evidence-based workforce readiness and recruitment platform engineered to eliminate the persistent mismatch between university academic output and real-world tech industry expectations. 
 
 Traditional recruitment relies heavily on unvalidated CV buzzwords, inflated self-ratings, and certificates of attendance. SkillRoute AI replaces this friction with an immutable **Five-Tier Skill Evidence Framework**, **in-browser practical engineering challenges (Mission Arena)**, a **deterministic career matching engine**, **contextual Google Gemini AI coaching**, and a **verified Employer Recruitment Portal** featuring instant shortlist confirmation and direct institutional competency endorsements.
 
@@ -197,7 +198,7 @@ $$\text{Estimated Weeks} = \lceil \text{Estimated Effort Hours} / \text{Weekly S
 ### Automated Test Runner Results (`scripts/run-tests.ts`):
 ```
 ==================================================================
- SkillRoute AI 2.0 - Verification of Mathematical Invariants
+ SkillRoute AI - Verification of Mathematical Invariants
 ==================================================================
 Test Group 1: Benchmark A — Junior Data Analyst (58.33% / 80h / 10w) -> ALL PASS
 Test Group 2: Benchmark B — Updated SQL Level 3 (66.67% / 70h / 9w)  -> ALL PASS

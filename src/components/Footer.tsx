@@ -125,7 +125,7 @@ export function Footer() {
 
         {/* Bottom copyright */}
         <div className="pt-6 border-t border-brand-sage/40 dark:border-brand-onyx flex flex-col sm:flex-row items-center justify-between text-xs text-brand-onyx/70 dark:text-brand-sage/70">
-          <p>© 2026 SkillRoute AI 2.0. Built for AIBC Daffodil International University.</p>
+          <p>© 2026 SkillRoute AI. Built for AIBC Daffodil International University.</p>
           <p className="mt-2 sm:mt-0 flex items-center space-x-1">
             <span>Engineering Excellence from Learning to Employability</span>
           </p>

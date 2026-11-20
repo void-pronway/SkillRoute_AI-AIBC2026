@@ -5,7 +5,7 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "SkillRoute AI 2.0 — From Learning to Employability",
+  title: "SkillRoute AI — From Learning to Employability",
   description:
     "AI-Assisted Workforce Development, Skill Assessment, Evidence-Based Credentialing and Talent Recruitment Platform for AIBC 2026.",
   keywords: [
