@@ -19,13 +19,148 @@
 
 ## 📌 Executive Summary
 
-**SkillRoute AI** is an enterprise-ready, evidence-based workforce readiness and recruitment platform engineered to eliminate the persistent mismatch between university academic output and real-world tech industry expectations. 
+**SkillRoute AI** is an enterprise-grade, evidence-based workforce readiness and recruitment platform engineered to eliminate the persistent disconnect between university academic curricula and real-world tech industry expectations.
 
-Traditional recruitment relies heavily on unvalidated CV buzzwords, inflated self-ratings, and certificates of attendance. SkillRoute AI replaces this friction with an immutable **Five-Tier Skill Evidence Framework**, **in-browser practical engineering challenges (Mission Arena)**, a **deterministic career matching engine**, **contextual Google Gemini AI coaching**, and a **verified Employer Recruitment Portal** featuring instant shortlist confirmation and direct institutional competency endorsements.
+Traditional hiring pipelines rely on unverified CV keywords, self-inflated ratings, and non-verifiable participation certificates. SkillRoute AI disrupts this paradigm with:
+1. **Five-Tier Skill Evidence Framework**: Clear institutional demarcation separating self-claims, diagnostic knowledge, practical mission executions, automated project rubric reviews, and recruiter endorsements.
+2. **Four-Step Sequential Student Progression**: Deterministic skill calibration, observational diagnostic assessments, weighted Euclidean career matching, and capacity-constrained 4-week roadmap scheduling.
+3. **SkillRoute Mission Arena**: Practical in-browser coding environments with server-side AST analysis and Academic Integrity Graders (Modes A & B).
+4. **Contextual Google Gemini AI Coach**: Production-integrated `gemini-3.5-flash-lite` analyzing individual skill gaps and generating persistent study strategies with stale-state detection.
+5. **Verified Employer Portal & Candidate Dossier**: Instant shortlist pipeline notifications, comprehensive candidate evidence dossiers, and direct institutional Tier 5 competency endorsements.
+6. **Cryptographic Verification Authority**: Tamper-resistant credential records with SHA-256 verification hashes and scannable QR codes.
 
 ---
 
-## 🏛️ System Architecture & Workflow
+## 👤 1-Click Demo Accounts
+
+The platform includes four pre-seeded demo personas configured with real DIU academic profiles, baseline skill records, and historical credentials. You can click any of the **Quick Demo Login** buttons on the [Login Page](http://localhost:3000/login) or enter credentials manually:
+
+| Persona | Email | Password | Role & Track Focus | Key Demonstration Workflows |
+| :--- | :--- | :--- | :--- | :--- |
+| **Student 1** | `student@skillroute.ai` | `password123` | **Data Analyst Track**<br>*(Name: Demo Student)* | • Benchmarks A & B calibration<br>• 4-Step sequential progression & Step Lock<br>• Assessment Hub with 1-Click correct answers<br>• Mission Arena coding & 1-Click full score<br>• SkillProof™ Level 4 & Level 5 badges |
+| **Student 2** | `student1@skillroute.ai` | `Test123` | **Junior Backend Track**<br>*(Name: Mashfiqur Rahman)* | • Pre-configured DIU CSE undergraduate profile<br>• Python, SQL, REST APIs & JavaScript skills<br>• Step 3 Career Gap evaluation for Backend roles<br>• Step 4 Capacity-constrained learning roadmap<br>• Live Gemini AI coaching guidance generation |
+| **Employer** | `employer@technext.bd` | `password123` | **TechNext Ltd. Recruiter**<br>*(Org Owner)* | • Candidate discovery with skill threshold filters<br>• **Instant Shortlist Toast Notification**<br>• **Candidate Evidence Dossier ("Make Their Detail")**<br>• **1-Click Tier 5 Institutional Endorsement** |
+| **Admin** | `admin@skillroute.ai` | `password123` | **System Administrator**<br>*(Governance & Compliance)* | • Platform health metrics & aggregate analytics<br>• User directory & role governance<br>• Partner organization verified badge management<br>• Tamper-evident immutable security audit ledger |
+
+---
+
+## 📸 Visual UI & Feature Walkthrough Gallery
+
+This section illustrates the core user interfaces of SkillRoute AI. All screenshot placeholders are mapped to `docs/screenshots/`. You can view the pre-bundled captures or drop your own captures into `docs/screenshots/` using the specified filenames.
+
+---
+
+### 1. Landing Page (Modern Dark & Light Design System)
+*A high-conversion entrance highlighting the five-tier evidence model, employer partnerships, and student pathways.*
+
+![Landing Page](docs/screenshots/01_landing_page.png)
+
+> 💡 **Screenshot Placeholder:** `docs/screenshots/01_landing_page.png`  
+> **Key UI Features:** Dark/Light theme toggle, bilingual language switch (English / Bengali), responsive widescreen grid (`max-w-[1720px]`), direct CTA buttons for students and employers.
+
+---
+
+### 2. Step 1: Technical Skill Profile Calibration & Sequential Step Lock
+*Students calibrate their competency sliders and study availability with strict sequential step enforcement.*
+
+![Student Step 1 Skill Profile](docs/screenshots/02_student_step1_skills.png)
+
+> 💡 **Screenshot Placeholder:** `docs/screenshots/02_student_step1_skills.png`  
+> **Key UI Features:** Skill competency sliders (Levels 0–5), catalog skill selector (*SQL, Python, REST APIs, Git, Docker, etc.*), weekly study hours allocation (2–40 hrs/wk), Benchmark A/B quick calibration buttons, and step-locking banner preventing skipping ahead.
+
+---
+
+### 3. Step 2: Assessment Hub with 1-Click Fast-Track Demo Solvers
+*Standardized diagnostic tests evaluating theoretical comprehension with demo autofill tools for judges.*
+
+![Assessment Hub](docs/screenshots/03_student_step2_assessment.png)
+
+> 💡 **Screenshot Placeholder:** `docs/screenshots/03_student_step2_assessment.png`  
+> **Key UI Features:** Multi-category diagnostic MCQs, per-question `Fill Correct Answer` button, global `Fill All Correct Answers (Demo)` tool, live observational evidence grader issuing Tier 2 credentials upon completion.
+
+---
+
+### 4. Step 3: Career Compatibility & Skill Gap Analysis
+*Transparent Euclidean matching evaluating compatibility, estimated effort, and completion timelines.*
+
+![Career Compatibility](docs/screenshots/04_student_step3_career_matches.png)
+
+> 💡 **Screenshot Placeholder:** `docs/screenshots/04_student_step3_career_matches.png`  
+> **Key UI Features:** Employability Match %, Estimated Effort (hours), and Timeline (weeks) badges calculated deterministically; live Skill Gap breakdown comparing target thresholds against student tiers; dynamic role selection updating Step 4.
+
+---
+
+### 5. Step 4: 4-Week Capacity-Constrained Roadmap & Persistent Task Tracker
+*Personalized curriculum dividing effort into weekly milestones with persistent progress checkoffs.*
+
+![Roadmap Tracker](docs/screenshots/05_student_step4_roadmap_tracker.png)
+
+> 💡 **Screenshot Placeholder:** `docs/screenshots/05_student_step4_roadmap_tracker.png`  
+> **Key UI Features:** Interactive task completion checkboxes with real-time progress bar; study session logging dialog (recording duration, topics, and notes); capacity limits preventing overload (e.g. 8 hrs/wk strictly allocates 32 hours across weeks 1–4).
+
+---
+
+### 6. Step 4: Google Gemini AI Learning Coach
+*Context-aware AI mentor analyzing candidate skill gaps and generating persistent study plans.*
+
+![Google Gemini AI Coach](docs/screenshots/06_student_step4_gemini_ai_coach.png)
+
+> 💡 **Screenshot Placeholder:** `docs/screenshots/06_student_step4_gemini_ai_coach.png`  
+> **Key UI Features:** Direct Google Gemini API (`gemini-3.5-flash-lite`) integration; gap remediation strategies; interview preparation tips; stale-state detection alerting the student if profile skills change; persistent database storage of AI guidance.
+
+---
+
+### 7. SkillRoute Mission Arena (Practical Coding Workspace)
+*In-browser engineering environments replacing multiple-choice guesswork with hands-on problem solving.*
+
+![Mission Arena Workspace](docs/screenshots/07_mission_arena_evaluator.png)
+
+> 💡 **Screenshot Placeholder:** `docs/screenshots/07_mission_arena_evaluator.png`  
+> **Key UI Features:** Monaco-style code editor; test case runner; Mode A (Independent Coding with undeclared AI detection penalty) vs. Mode B (Transparent AI Disclosure with 0 penalty); `1-Click Solve & Pass (Demo)` button for rapid judge evaluation; automatic issuance of Tier 3 credentials (`SR-PRAC-...`).
+
+---
+
+### 8. SkillProof™ Evidence Portfolio & Five-Tier Badging
+*Comprehensive competency portfolio showcasing candidate mastery across all five tiers of evidence.*
+
+![SkillProof Portfolio](docs/screenshots/08_skillproof_five_tier_portfolio.png)
+
+> 💡 **Screenshot Placeholder:** `docs/screenshots/08_skillproof_five_tier_portfolio.png`  
+> **Key UI Features:** Dynamic Level 1–5 rank badge; Skill Competency Matrix showing verified levels; **Tier 4 Project Review submission form** (GitHub repo URL, artifact URL, project title evaluated by AI rubric); **Tier 5 Employer Verification notice** (strictly restricted from self-award); public portfolio publishing with granular privacy controls.
+
+---
+
+### 9. Cryptographic Credential Verification Authority
+*Publicly verifiable credential view proving authenticity with tamper-resistant metadata.*
+
+![Credential Verification](docs/screenshots/09_credential_qr_verification.png)
+
+> 💡 **Screenshot Placeholder:** `docs/screenshots/09_credential_qr_verification.png`  
+> **Key UI Features:** Real-time scannable QR code encoding the verification URL; unique credential ID (`SR-...`); SHA-256 cryptographic verification signature; institutional issuer details and issuing authority disclaimer.
+
+---
+
+### 10. Employer Recruitment Portal & Instant Shortlist Feedback
+*Talent acquisition engine allowing recruiters to filter by verified skill thresholds and track candidates.*
+
+![Employer Shortlist Feedback](docs/screenshots/10_employer_candidate_shortlist.png)
+
+> 💡 **Screenshot Placeholder:** `docs/screenshots/10_employer_candidate_shortlist.png`  
+> **Key UI Features:** Multi-filter candidate discovery; live competency pills; **Instant Emerald Toast Notification** confirming candidate shortlisting; dynamic button transition from `+ Shortlist Candidate` to `✓ Shortlisted`.
+
+---
+
+### 11. Candidate Evidence Dossier Modal & Tier 5 Institutional Endorsement
+*Deep candidate profile view empowering employers to inspect evidence and award official endorsements.*
+
+![Candidate Evidence Dossier](docs/screenshots/11_employer_candidate_dossier_tier5.png)
+
+> 💡 **Screenshot Placeholder:** `docs/screenshots/11_employer_candidate_dossier_tier5.png`  
+> **Key UI Features:** Academic profile (DIU CSE, graduation year, contact); match fit score; five-tier verified skill list; issued credentials log; **`⚡ Endorse Candidate (Award Tier 5 Badge)`** interface allowing recruiters to select a skill and award an official Tier 5 credential live.
+
+---
+
+## 🏛️ System Architecture
 
 ```mermaid
 flowchart TD
@@ -60,134 +195,26 @@ flowchart TD
 
 ---
 
-## 🚀 Key Features & Capabilities
+## 🏆 Five-Tier Skill Evidence Framework
 
-### 1. Four-Step Sequential Student Progression Engine (`/dashboard`)
-The student experience enforces an academic sequential progression: **Skill Profile → Assessment Hub → Career Matches → 4-Week Roadmap**:
+SkillRoute AI enforces strict institutional boundaries across five tiers of competency proof:
 
-* **Step 1: Technical Skill Profile & Calibration**
-  - Interactive competency sliders (Level 0: None to Level 5: Advanced).
-  - Catalog skill selector (*Git, REST APIs, HTML/CSS, JavaScript, Linux, Figma, etc.*).
-  - Weekly study capacity allocation (2 hrs/wk Casual to 40 hrs/wk Intensive).
-  - **Quick Benchmark Calibration Buttons**:
-    - `⚡ Benchmark A (SQL 2/5)`: Sets baseline Junior Data Analyst (58.33% match / 80 hrs effort / 10 weeks).
-    - `⚡ Benchmark B (SQL 3/5)`: Upgrades SQL to Level 3 (66.67% match / 70 hrs effort / 9 weeks).
-  - **Sequential Step Lock & Skill Relock Invariant**: Downstream steps are locked until completed in order. Modifying any skill in Step 1 immediately relocks Steps 2, 3, and 4 until refreshed sequentially.
+| Tier | Tier Level Name | Verification Authority | Assessment Method | Student Self-Award Allowed? |
+| :---: | :--- | :--- | :--- | :---: |
+| **Tier 1** | **Self-Reported** | Student | Self-claimed rating slider (0–5 scale) | **Yes** |
+| **Tier 2** | **Knowledge Assessed** | SkillRoute AI | Standardized diagnostic MCQs | **Yes** |
+| **Tier 3** | **Practically Demonstrated** | Mission Arena | Practical hands-on coding challenges | **Yes** |
+| **Tier 4** | **Project Reviewed** | SkillRoute AI Rubric | GitHub repository & artifact rubric review | **Yes (via Rubric)** |
+| **Tier 5** | **Employer Verified** | Partner Employers | Recruiter interview or technical trial | **STRICTLY NO (Employer Only)** |
 
-* **Step 2: Assessment Hub (Diagnostic Checks & Missions)**
-  - Standardized diagnostic MCQs evaluating theoretical comprehension.
-  - **Demo Fast-Track Tools**: `Fill All Correct Answers (Demo)` and per-question `Fill Correct Answer`.
-  - Observational evidence grader classifying results into *Some Supporting Evidence* (Tier 2), *Inconclusive*, or *Claim Not Supported*.
-  - Embedded Mission Arena challenges with 1-click full mark (100 pts) demo solver.
-
-* **Step 3: Career Compatibility & Skill Gap Analysis**
-  - Evaluates student skills against 5 standardized career tracks:
-    1. *Junior Data Analyst*
-    2. *Junior Backend Developer*
-    3. *Junior Frontend Developer*
-    4. *Junior Cybersecurity Analyst*
-    5. *Junior UI/UX Designer*
-  - Outputs transparent deterministic metrics: **Employability Match %**, **Estimated Effort (hours)**, and **Timeline (weeks)**.
-  - Live Skill Gap Breakdown comparing target requirements vs. candidate current levels and evidence tiers.
-  - Selecting an active target role dynamically updates the Step 4 Roadmap and DIU Readiness Deck.
-
-* **Step 4: 4-Week Personalized Learning Roadmap & Persistent Tracker**
-  - Capacity-constrained allocation (e.g. 8 hrs/wk allocates exactly 32 hours over weeks 1–4, reserving remaining hours).
-  - **Interactive Task Checkboxes**: Students check off completed study units with real-time persistent completion tracking.
-  - **Study Session Logger**: Logs study minutes, topics, and technical notes to the database.
-  - **Google Gemini AI Learning Coach**:
-    - Powered by `gemini-3.5-flash-lite` with production API configuration.
-    - Generates personalized study strategies, gap remediation advice, and interview preparation tips.
-    - **Stale State Detection**: Automatically alerts students to refresh AI guidance whenever profile skills are updated.
-    - Persists AI guidance snapshots into the database.
-
----
-
-### 2. SkillRoute Mission Arena (Practical Task Execution) (`/missions`)
-Hands-on technical assessment environments replacing multiple-choice guesswork:
-1. **Data Track**: SQL sales performance query optimization with multi-table joins and aggregation.
-2. **Backend Track**: REST API endpoint security, payload bounds validation, and error handling.
-3. **Security Track**: Simulated Security Operations Center (SOC) brute-force log analysis and incident response.
-4. **Frontend Track**: WCAG 2.2 AA accessible component construction with keyboard-navigable ARIA sliders.
-5. **UI/UX Track**: Nielsen Norman heuristic usability audit and wireframe contrast evaluation.
-
-* **Academic Integrity Engine**:
-  - **Mode A (Independent Coding)**: Candidate works independently. Server-side grading detects undeclared AI markers and applies a 25-point penalty if detected.
-  - **Mode B (AI-Assisted with Transparent Disclosure)**: Candidate discloses AI assistance notes. Zero penalty is applied for transparently disclosed AI usage, awarding full 100/100 points for verified correctness.
-* Passing scores (≥70%) automatically issue verified Tier 3 credentials (`SR-PRAC-...`).
-
----
-
-### 3. Five-Tier Skill Evidence Framework
-
-SkillRoute AI maintains strict demarcations across five hierarchical tiers of evidence:
-
-| Tier | Name | Verification Authority | Assessment Method | Student Self-Claim? |
-| :--- | :--- | :--- | :--- | :--- |
-| **Tier 1** | **Self-Reported** | Student | Self-claimed rating (0–5 scale) | Yes |
-| **Tier 2** | **Knowledge Assessed** | SkillRoute AI | Standardized diagnostic MCQs | Yes |
-| **Tier 3** | **Practically Demonstrated** | Mission Arena | Practical hands-on coding challenges | Yes |
-| **Tier 4** | **Project Reviewed** | SkillRoute AI Rubric | GitHub repository artifact evaluation | Yes (AI Rubric) |
-| **Tier 5** | **Employer Verified** | Partner Employers | Recruiter interview or technical trial | **NO (Employer Only)** |
-
-* **Tier 4 (Project Reviewed)**: Students submit Skill Competency, Project Title, and GitHub Repository / Live Artifact URL. SkillRoute AI performs an automated 4-part rubric evaluation (Architecture 25 pts, Implementation 25 pts, Code Quality 25 pts, Testing 25 pts), issuing `SR-PRJ-...` credentials and unlocking the **SkillProof™ Level 4 Portfolio**.
+* **Tier 4 (Project Reviewed)**: Students submit Skill Competency, Project Title, and GitHub Repository / Artifact URL. SkillRoute AI evaluates the submission against a 4-part rubric (Architecture 25 pts, Implementation 25 pts, Code Quality 25 pts, Testing 25 pts), awarding `SR-PRJ-...` credentials and unlocking the **SkillProof™ Level 4 Portfolio**.
 * **Tier 5 (Employer Verified)**: **Cannot be self-awarded by students**. Non-employer attempts are blocked with HTTP 403 Forbidden. Tier 5 is exclusively awarded by authorized recruiters in the Employer Portal during candidate interviews or recruitment evaluations (`SR-EMP-...`), unlocking the **SkillProof™ Level 5 Portfolio**.
 
 ---
 
-### 4. SkillProof™ Evidence Portfolio & Credential Verification (`/skillproof` & `/verify`)
+## 📐 Mathematical Invariants & Verification Proofs
 
-* **Dynamic Portfolio Badges**: Automatically updates candidate portfolio rank from Level 1 up to Level 5 based on verified credentials.
-* **Candidate Competencies Matrix**: Live badges mapping each skill to its highest proven tier.
-* **Tamper-Resistant Cryptographic Credentials**: Public verification records (`/verify/[credentialId]`) with real-time scannable QR codes, SHA-256 hashes, and institutional authority disclaimers.
-* **Granular Privacy & Public Portfolio Sharing**:
-  - Checkbox consent controls (*name, university, career goal, verified skills, assessment results*).
-  - 1-Click **Publish Portfolio** creates a public recruiter link (`/portfolio/[publicId]`).
-  - 1-Click **Revoke Portfolio** instantly withdraws public visibility.
-* **Export & Print**: One-click standardized JSON export and print-formatted PDF institutional dossier.
-
----
-
-### 5. Employer Recruitment Portal (`/employer`)
-
-Empowers partner employers (*e.g., TechNext Ltd., Brain Station 23, DIU Innovation Lab*) to hire verified talent:
-
-* **Tab 1: Candidate Discovery & Competency Search**
-  - Filter candidates by career track and verified competency thresholds.
-  - **Instant Shortlist Feedback**: Clicking `+ Shortlist Candidate` displays an immediate emerald toast notification (`✓ Candidate [Name] successfully shortlisted and added to your recruitment pipeline!`) and updates the button to `✓ Shortlisted`.
-  - **Candidate Evidence Dossier Modal ("Make Their Detail")**:
-    - Candidate Name, University (*DIU*), Department (*CSE*), Graduation Year (*2026*), Active Education Status, and Contact Email.
-    - Employability match fit score and target role.
-    - Five-Tier Demonstrated Skill Matrix with live badges.
-    - Verified credentials list with direct verification links.
-    - **`⚡ Endorse Candidate (Award Tier 5 Badge)`**: Recruiter selects a skill and awards direct institutional endorsement (`SR-EMP-...`) live into the database!
-* **Tab 2: Job Openings Management**
-  - Post new jobs with minimum competency thresholds (*e.g., SQL ≥ Level 3, Python ≥ Level 3*).
-* **Tab 3: Recruitment Pipeline**
-  - Manage candidate pipeline across 4 stages: `REVIEWING` → `SHORTLISTED` → `INTERVIEWING` → `OFFERED`.
-
----
-
-### 6. Platform Administration & Security Governance (`/admin`)
-
-* **Platform Metrics**: Real-time counters for Total Users, Active Students, Registered Organizations, Credentials Issued, and Practical Missions Evaluated.
-* **User Directory**: Role management across `STUDENT`, `EMPLOYER_OWNER`, `EMPLOYER_RECRUITER`, and `ADMIN`.
-* **Organization Governance**: Verification badge management for partner employers.
-* **Tamper-Evident Audit Ledger**: Immutable audit log recording all logins, job creations, candidate shortlisting, credential issuances, and profile changes with IP tracking.
-
----
-
-### 7. Modern UI Design System & 100% Bilingual Localization
-
-* **Widescreen Balanced Layout**: Designed for modern displays (`max-w-[1720px]`) with zero empty margins.
-* **Theme System**: Seamless Dark and Light mode honoring system preference or user toggle.
-* **100% English & Bengali Key Parity**: 239/239 keys strictly synchronized with native Bengali numerals (`২০২৬`, `৫৮.৩৩%`, `৮০`).
-
----
-
-## 📐 Mathematical Invariants & Benchmark Proofs
-
-The platform enforces transparent, reproducible mathematical formulas:
+The platform enforces reproducible mathematical formulas:
 
 $$\text{Match Percentage} = \max\left(0, \min\left(100, 100 \times \left(1 - \frac{\sqrt{\sum w_i (\text{target}_i - \min(\text{current}_i, \text{target}_i))^2}}{\sqrt{\sum w_i \cdot \text{target}_i^2}}\right)\right)\right)$$
 
@@ -195,7 +222,7 @@ $$\text{Estimated Effort Hours} = \sum \max(0, \text{target}_i - \text{current}_
 
 $$\text{Estimated Weeks} = \lceil \text{Estimated Effort Hours} / \text{Weekly Study Hours} \rceil$$
 
-### Automated Test Runner Results (`scripts/run-tests.ts`):
+### Automated Test Suite Execution (`scripts/run-tests.ts`):
 ```
 ==================================================================
  SkillRoute AI - Verification of Mathematical Invariants
@@ -221,30 +248,32 @@ Test Group 10: Five-Tier Skill Evidence Framework Resolver           -> ALL PASS
 
 | Domain | Technologies |
 | :--- | :--- |
-| **Frontend** | Next.js 14 (App Router), React 18, Tailwind CSS, Lucide React, QRCode |
-| **Backend** | Next.js Server Components, API Route Handlers, Zod Validation |
-| **Database & ORM** | Prisma ORM with SQLite (`dev.db`), PostgreSQL production-ready |
-| **AI Integration** | Google Gemini API (`@google/genai`) using `gemini-3.5-flash-lite` |
-| **Authentication** | Bcrypt password hashing, session cookies, Role-Based Access Control (RBAC) |
-| **Testing** | Node.js TSX test runner (`scripts/run-tests.ts`), Browser Subagents |
+| **Frontend Framework** | Next.js 14.2 (App Router with Server & Client Components) |
+| **Language & Typing** | TypeScript 5.6 with strict type-safety |
+| **Styling & Design System** | Tailwind CSS 3.4, Lucide React icons, Custom Color Tokens |
+| **Database & ORM** | Prisma ORM 5.22 with SQLite (`dev.db`), PostgreSQL production-ready |
+| **Artificial Intelligence** | Google Gemini API (`@google/genai`) with `gemini-3.5-flash-lite` |
+| **Security & Auth** | Bcrypt password encryption, session cookies, Role-Based Access Control (RBAC) |
+| **Verification & Hashes** | Node.js Crypto (SHA-256 signatures), QRCode generation |
+| **Quality Assurance** | Automated TSX Test Runner (`scripts/run-tests.ts`), Subagent Browser QA |
 
 ---
 
 ## 💻 Local Installation & Setup Guide
 
-### Prerequisites
+### System Prerequisites
 - **Node.js**: Version `18.x` or `20.x` LTS ([Download Node.js](https://nodejs.org/))
-- **npm**: Bundled with Node.js
-- **Web Browser**: Chrome, Edge, Brave, or Firefox
+- **npm**: Version `9.x` or higher (bundled with Node.js)
+- **Web Browser**: Google Chrome, Microsoft Edge, Brave, or Firefox
 
-### Step-by-Step Commands
+### Step-by-Step Installation Commands
 
 ```powershell
 # 1. Clone the repository
 git clone https://github.com/void-pronway/SkillRoute_AI-AIBC2026.git
 cd SkillRoute_AI-AIBC2026
 
-# 2. Install dependencies
+# 2. Install all dependencies
 npm install
 
 # 3. Setup environment variables (create .env from .env.example)
@@ -257,7 +286,7 @@ npx prisma generate
 # 5. Seed database with demo accounts, benchmarks, and challenges
 node scripts/seed.js
 
-# 6. Run automated tests (50/50 test assertions)
+# 6. Run automated test suite (50/50 test assertions)
 npm test
 
 # 7. Start the application
@@ -273,37 +302,39 @@ Open your browser and navigate to: **`http://localhost:3000`**
 
 ---
 
-## 👤 1-Click Demo Accounts
-
-Use the **1-Click Demo** buttons on the [Login Page](http://localhost:3000/login) or enter credentials directly:
-
-| Persona | Email | Password | Primary Workflow |
-| :--- | :--- | :--- | :--- |
-| **Student** | `student@skillroute.ai` | `password123` | Benchmarks A & B, 4-Step Flow, Mission Arena, SkillProof |
-| **Employer** | `employer@technext.bd` | `password123` | Talent Search, Shortlist Toast, Candidate Dossier, Tier 5 Endorse |
-| **Admin** | `admin@skillroute.ai` | `password123` | Metric Counters, User Governance, Org Seals, Security Audit Logs |
-
----
-
-## 📂 Project Structure
+## 📂 Project Directory Structure
 
 ```
+├── docs/
+│   └── screenshots/             # UI Walkthrough screenshots and image placeholders
+│       ├── 01_landing_page.png
+│       ├── 02_student_step1_skills.png
+│       ├── 03_student_step2_assessment.png
+│       ├── 04_student_step3_career_matches.png
+│       ├── 05_student_step4_roadmap_tracker.png
+│       ├── 06_student_step4_gemini_ai_coach.png
+│       ├── 07_mission_arena_evaluator.png
+│       ├── 08_skillproof_five_tier_portfolio.png
+│       ├── 09_credential_qr_verification.png
+│       ├── 10_employer_candidate_shortlist.png
+│       └── 11_employer_candidate_dossier_tier5.png
 ├── prisma/
-│   └── schema.prisma            # Prisma ORM relational schema & credential models
+│   └── schema.prisma            # Relational models (Users, Profiles, Credentials, AuditLogs)
 ├── scripts/
 │   ├── run-tests.ts             # 50-assertion mathematical invariant & parity test suite
-│   └── seed.js                  # Database seeder with DIU personas & challenge seeds
+│   └── seed.js                  # Database seeder (Student 1, Student 2, Employer, Admin)
 ├── src/
 │   ├── app/
 │   │   ├── admin/page.tsx       # Platform Administration & Security Audit Portal
 │   │   ├── api/                 # Next.js Route Handlers (Auth, AI, Credentials, Employer)
 │   │   ├── dashboard/page.tsx   # 4-Step Student Dashboard & Gemini AI Coach
 │   │   ├── employer/page.tsx    # Employer Recruitment Portal & Candidate Dossier
+│   │   ├── login/page.tsx       # Authentication & 4-Button 1-Click Demo Login
 │   │   ├── missions/            # Practical Mission Arena Catalog & Coding Workspace
 │   │   ├── portfolio/           # Public Sharable Evidence Portfolio View
 │   │   ├── skillproof/page.tsx  # Five-Tier SkillProof Portfolio & Tier 4 Review Hub
 │   │   └── verify/              # Cryptographic Credential Verification Authority
-│   ├── components/              # Reusable UI components (Navbar, Footer, EvidenceBadges)
+│   ├── components/              # Navbar, Footer, EvidenceBadges, Modal Dialogs
 │   ├── context/AppContext.tsx   # Global state, theme toggle, and i18n context
 │   ├── data/                    # Careers, diagnostic questions, and challenge datasets
 │   ├── lib/                     # Auth helpers, Prisma client, and 100% bilingual dictionaries
@@ -316,7 +347,7 @@ Use the **1-Click Demo** buttons on the [Login Page](http://localhost:3000/login
 
 ---
 
-## 🏆 Institutional Verification
+## 🏆 Institutional Verification & Credits
 
 Developed for the **AIBC Workforce Ready Challenge 2026** at **Daffodil International University (DIU)**.  
 *All mathematical benchmarks, academic integrity evaluations, and credential verification procedures are fully auditable and deterministic.*

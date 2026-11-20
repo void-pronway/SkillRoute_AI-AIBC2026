@@ -48,9 +48,9 @@ export default function LoginPage() {
     }
   };
 
-  const handleQuickDemo = (demoEmail: string) => {
+  const handleQuickDemo = (demoEmail: string, demoPassword = "password123") => {
     setEmail(demoEmail);
-    setPassword("Password123!");
+    setPassword(demoPassword);
   };
 
   return (
@@ -74,25 +74,36 @@ export default function LoginPage() {
             <Sparkles className="w-3.5 h-3.5 text-amber-500 dark:text-brand-yellow" />
             <span>{t("quickLoginTitle")}</span>
           </div>
-          <div className="grid grid-cols-3 gap-1.5 text-[11px]">
+          <div className="grid grid-cols-4 gap-1.5 text-[11px]">
             <button
               type="button"
-              onClick={() => handleQuickDemo("student@skillroute.ai")}
+              onClick={() => handleQuickDemo("student@skillroute.ai", "password123")}
               className="px-2 py-1.5 rounded bg-white dark:bg-brand-onyx hover:bg-brand-sage/40 dark:hover:bg-brand-onyx/80 font-medium text-brand-black dark:text-brand-cream border border-brand-sage/60 dark:border-brand-onyx transition-colors text-center"
+              title="Student 1: student@skillroute.ai"
             >
-              Student
+              Student 1
             </button>
             <button
               type="button"
-              onClick={() => handleQuickDemo("employer@technext.bd")}
+              onClick={() => handleQuickDemo("student1@skillroute.ai", "Test123")}
               className="px-2 py-1.5 rounded bg-white dark:bg-brand-onyx hover:bg-brand-sage/40 dark:hover:bg-brand-onyx/80 font-medium text-brand-black dark:text-brand-cream border border-brand-sage/60 dark:border-brand-onyx transition-colors text-center"
+              title="Student 2: student1@skillroute.ai"
+            >
+              Student 2
+            </button>
+            <button
+              type="button"
+              onClick={() => handleQuickDemo("employer@technext.bd", "password123")}
+              className="px-2 py-1.5 rounded bg-white dark:bg-brand-onyx hover:bg-brand-sage/40 dark:hover:bg-brand-onyx/80 font-medium text-brand-black dark:text-brand-cream border border-brand-sage/60 dark:border-brand-onyx transition-colors text-center"
+              title="Employer: employer@technext.bd"
             >
               Employer
             </button>
             <button
               type="button"
-              onClick={() => handleQuickDemo("admin@skillroute.ai")}
+              onClick={() => handleQuickDemo("admin@skillroute.ai", "password123")}
               className="px-2 py-1.5 rounded bg-white dark:bg-brand-onyx hover:bg-brand-sage/40 dark:hover:bg-brand-onyx/80 font-medium text-brand-black dark:text-brand-cream border border-brand-sage/60 dark:border-brand-onyx transition-colors text-center"
+              title="Admin: admin@skillroute.ai"
             >
               Admin
             </button>

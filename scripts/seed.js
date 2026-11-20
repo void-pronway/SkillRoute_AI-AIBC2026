@@ -50,6 +50,46 @@ async function main() {
   });
   console.log(`✓ Seeded Student: ${student.email}`);
 
+  // 1b. Seed Second Student Persona (Mashfiqur Rahman)
+  const student1PasswordHash = await bcrypt.hash("Test123", 10);
+  const student1 = await prisma.user.upsert({
+    where: { email: "student1@skillroute.ai" },
+    update: {
+      passwordHash: student1PasswordHash,
+    },
+    create: {
+      email: "student1@skillroute.ai",
+      passwordHash: student1PasswordHash,
+      name: "Mashfiqur Rahman",
+      role: "STUDENT",
+      bio: "Undergraduate Computer Science & Engineering student at Daffodil International University focusing on Backend Engineering and Distributed Systems.",
+      isVerified: true,
+      studentProfile: {
+        create: {
+          university: "Daffodil International University",
+          department: "Computer Science and Engineering",
+          graduationYear: 2026,
+          educationStatus: "Undergraduate",
+          careerGoal: "junior_backend_developer",
+          weeklyStudyHours: 12,
+          skillsJson: JSON.stringify({
+            python: 3,
+            sql: 3,
+            rest_apis: 2,
+            html: 2,
+            javascript: 2,
+          }),
+          assessedSkillsJson: JSON.stringify({
+            sql: { levelAssessed: 3, evaluated: true },
+            rest_apis: { levelAssessed: 2, evaluated: true },
+          }),
+        },
+      },
+    },
+    include: { studentProfile: true },
+  });
+  console.log(`✓ Seeded Second Student: ${student1.email}`);
+
   // 2. Seed Employer Organization & Owner
   const employer = await prisma.user.upsert({
     where: { email: "employer@technext.bd" },
