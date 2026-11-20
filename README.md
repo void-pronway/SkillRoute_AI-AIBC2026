@@ -53,7 +53,7 @@ This interactive visual gallery illustrates the core workflows of **SkillRoute A
   <tr>
     <td width="50%" valign="top" align="center">
       <a href="docs/screenshots/01_landing_page.png">
-        <img src="docs/screenshots/01_landing_page.png" alt="Landing Page" width="100%" />
+        <img src="docs/screenshots/01_landing_page.png" alt="Landing Page" height="240" />
       </a>
       <br />
       <strong>1. Landing Page (Modern Design System)</strong>
@@ -62,7 +62,7 @@ This interactive visual gallery illustrates the core workflows of **SkillRoute A
     </td>
     <td width="50%" valign="top" align="center">
       <a href="docs/screenshots/02_student_step1_skills.png">
-        <img src="docs/screenshots/02_student_step1_skills.png" alt="Student Step 1 Skill Profile" width="100%" />
+        <img src="docs/screenshots/02_student_step1_skills.png" alt="Student Step 1 Skill Profile" height="240" />
       </a>
       <br />
       <strong>2. Step 1: Skill Profile Calibration & Step Lock</strong>
@@ -73,7 +73,7 @@ This interactive visual gallery illustrates the core workflows of **SkillRoute A
   <tr>
     <td width="50%" valign="top" align="center">
       <a href="docs/screenshots/03_student_step2_assessment.png">
-        <img src="docs/screenshots/03_student_step2_assessment.png" alt="Assessment Hub" width="100%" />
+        <img src="docs/screenshots/03_student_step2_assessment.png" alt="Assessment Hub" height="240" />
       </a>
       <br />
       <strong>3. Step 2: Assessment Hub (1-Click Solvers)</strong>
@@ -82,7 +82,7 @@ This interactive visual gallery illustrates the core workflows of **SkillRoute A
     </td>
     <td width="50%" valign="top" align="center">
       <a href="docs/screenshots/04_student_step3_career_matches.png">
-        <img src="docs/screenshots/04_student_step3_career_matches.png" alt="Career Compatibility" width="100%" />
+        <img src="docs/screenshots/04_student_step3_career_matches.png" alt="Career Compatibility" height="240" />
       </a>
       <br />
       <strong>4. Step 3: Career Compatibility & Gap Analysis</strong>
@@ -93,7 +93,7 @@ This interactive visual gallery illustrates the core workflows of **SkillRoute A
   <tr>
     <td width="50%" valign="top" align="center">
       <a href="docs/screenshots/05_student_step4_roadmap_tracker.png">
-        <img src="docs/screenshots/05_student_step4_roadmap_tracker.png" alt="Roadmap Tracker" width="100%" />
+        <img src="docs/screenshots/05_student_step4_roadmap_tracker.png" alt="Roadmap Tracker" height="240" />
       </a>
       <br />
       <strong>5. Step 4: 4-Week Roadmap & Persistent Tracker</strong>
@@ -102,7 +102,7 @@ This interactive visual gallery illustrates the core workflows of **SkillRoute A
     </td>
     <td width="50%" valign="top" align="center">
       <a href="docs/screenshots/06_student_step4_gemini_ai_coach.png">
-        <img src="docs/screenshots/06_student_step4_gemini_ai_coach.png" alt="Google Gemini AI Coach" width="100%" />
+        <img src="docs/screenshots/06_student_step4_gemini_ai_coach.png" alt="Google Gemini AI Coach" height="240" />
       </a>
       <br />
       <strong>6. Step 4: Google Gemini AI Learning Coach</strong>
@@ -113,7 +113,7 @@ This interactive visual gallery illustrates the core workflows of **SkillRoute A
   <tr>
     <td width="50%" valign="top" align="center">
       <a href="docs/screenshots/07_mission_arena_evaluator.png">
-        <img src="docs/screenshots/07_mission_arena_evaluator.png" alt="Mission Arena Workspace" width="100%" />
+        <img src="docs/screenshots/07_mission_arena_evaluator.png" alt="Mission Arena Workspace" height="240" />
       </a>
       <br />
       <strong>7. Mission Arena (Practical Coding Workspace)</strong>
@@ -122,7 +122,7 @@ This interactive visual gallery illustrates the core workflows of **SkillRoute A
     </td>
     <td width="50%" valign="top" align="center">
       <a href="docs/screenshots/08_skillproof_five_tier_portfolio.png">
-        <img src="docs/screenshots/08_skillproof_five_tier_portfolio.png" alt="SkillProof Portfolio" width="100%" />
+        <img src="docs/screenshots/08_skillproof_five_tier_portfolio.png" alt="SkillProof Portfolio" height="240" />
       </a>
       <br />
       <strong>8. SkillProof™ Evidence Portfolio & Badges</strong>
@@ -133,7 +133,7 @@ This interactive visual gallery illustrates the core workflows of **SkillRoute A
   <tr>
     <td width="50%" valign="top" align="center">
       <a href="docs/screenshots/09_credential_qr_verification.png">
-        <img src="docs/screenshots/09_credential_qr_verification.png" alt="Credential Verification" width="100%" />
+        <img src="docs/screenshots/09_credential_qr_verification.png" alt="Credential Verification" height="240" />
       </a>
       <br />
       <strong>9. Cryptographic Credential QR Verification</strong>
@@ -142,7 +142,7 @@ This interactive visual gallery illustrates the core workflows of **SkillRoute A
     </td>
     <td width="50%" valign="top" align="center">
       <a href="docs/screenshots/10_employer_candidate_shortlist.png">
-        <img src="docs/screenshots/10_employer_candidate_shortlist.png" alt="Employer Shortlist Feedback" width="100%" />
+        <img src="docs/screenshots/10_employer_candidate_shortlist.png" alt="Employer Shortlist Feedback" height="240" />
       </a>
       <br />
       <strong>10. Employer Discovery & Shortlist Feedback Toast</strong>
@@ -153,7 +153,7 @@ This interactive visual gallery illustrates the core workflows of **SkillRoute A
   <tr>
     <td width="100%" valign="top" align="center" colspan="2">
       <a href="docs/screenshots/11_employer_candidate_dossier_tier5.png">
-        <img src="docs/screenshots/11_employer_candidate_dossier_tier5.png" alt="Candidate Dossier & Tier 5 Endorsement" width="60%" />
+        <img src="docs/screenshots/11_employer_candidate_dossier_tier5.png" alt="Candidate Dossier & Tier 5 Endorsement" height="260" />
       </a>
       <br />
       <strong>11. Candidate Evidence Dossier Modal & Tier 5 Institutional Endorsement</strong>
